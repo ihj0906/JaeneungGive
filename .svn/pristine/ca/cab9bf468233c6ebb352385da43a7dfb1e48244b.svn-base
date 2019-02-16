@@ -1,0 +1,25 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+
+<!-- <script type="text/javascript" src="member/member.js"></script> -->
+<!DOCTYPE html>
+<html>
+ <link href="/JaeneungGive/css/message.css" rel="stylesheet" type="text/css" />
+<head>
+<meta charset="UTF-8">
+<link href="../css/message.css" rel="stylesheet">
+</head>
+<body>
+	<div class="sidemenu">
+		<h2>쪽지</h2>
+		<hr>
+		<ul>
+			<li><a href="inbox.jsp">받은 쪽지함</a></li>
+			<li><a href="sent.jsp">보낸 쪽지함</a></li>
+			<li>▼임시</li>
+			<li><a href="write.jsp">쪽지쓰기</a></li>
+			<li><a href="readNote.jsp">쪽지읽기</a></li>
+		</ul>
+	</div>
+</body>
+</html>

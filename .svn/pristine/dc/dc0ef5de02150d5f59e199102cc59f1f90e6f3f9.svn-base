@@ -1,0 +1,38 @@
+package service;
+
+import dao.MemberDao;
+
+import dto.JoinRequest;
+import dto.Member;
+
+//회원가입 - 아이디 중복체크 > 패스워드 일치 체크 > 회원가입 완료
+
+public class MemberService {
+	private MemberDao memberDao;
+	
+	public MemberService(MemberDao memberDao) {
+		this.memberDao = memberDao;
+	}
+	
+	public void join(JoinRequest joinReq) {
+		Member member = memberDao.SelectId(joinReq.getId());
+		if (member != null) { 
+			// id 일치
+		}
+		Member newMember = new Member ();
+		newMember.setId(joinReq.getId());
+		newMember.setPassword(joinReq.getPassword());
+		newMember.setEmail(joinReq.getEmail());
+		newMember.setPhone(joinReq.getPhone());
+		newMember.setName(joinReq.getName());
+		memberDao.join(newMember);
+	}
+
+	public Member myinfo(String id) {
+		Member member = memberDao.SelectId(id);
+		
+		return member;
+	}
+	
+
+}

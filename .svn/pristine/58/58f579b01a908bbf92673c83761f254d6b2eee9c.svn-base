@@ -1,0 +1,22 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+
+<!DOCTYPE html>
+<html>
+<link href="/css/message.css" rel="stylesheet" type="text/css" />
+<head>
+<meta charset="UTF-8">
+<link href="../css/qna.css" rel="stylesheet">
+</head>
+<body>
+	<div class="sidemenu">
+		<h2>고객센터</h2>
+		<hr>
+		<ul>
+			<li><a href="inbox.jsp">문의 내역</a></li>
+			<li><a href="write.jsp">문의 하기</a></li>
+			<li><a href="sent.jsp">자주 묻는 질문</a></li>
+		</ul>
+	</div>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!-- 
+TODO
+분류가 기부/ 교환 일 경우 각 각 다른 색으로 표시 
+서브메뉴 클릭 시 해당 메뉴 볼드 처리 또는 특정 색으로 바꾸기 
+제목 외 다른 td는 사이즈 고정
+ -->
+<!-- 
+20190125 SY inbox / sent 화면 생성 
+			sidemenu 화면 생성
+ -->
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ include file="../header.jsp" %>
+<%@ include file="sidemenu.jsp" %>   
+
+<article>
+
+	<div class="note_area">
+		<h4>받은 쪽지함</h4>
+		<a class="del_btn" href="#"><span class="bu_del"></span>삭제</a>
+		<table class="notelist">
+			<tr>
+				<th width=10%;><input type="checkbox"></th>
+				<th width=10%;>분류</th>
+				<th width=50%>글제목</th>
+				<th width=10%>보낸사람</th>
+				<th width=20%>보낸날짜</th>
+			</tr>
+			<tr>
+				<td><input type="checkbox"></td>
+				<td>분류</td>
+				<td id=subject><a href=#>제목제목</a></td>
+				<td>임호준</td>
+				<td>2019-01-25 15:53</td>
+				<%-- <td><fmt:formatDate type="date" value=""/></td> --%>
+			</tr>
+			<tr>
+				<td><input type="checkbox"></td>
+				<td>분류</td>
+				<td id=subject><a href=#>제목제목</a></td>
+				<td>정재욱</td>
+				<td>2019-01-25 16:38</td>
+				<%-- <td><fmt:formatDate type="date" value=""/></td> --%>
+			</tr>
+			<tr>
+				<td><input type="checkbox"></td>
+				<td>분류</td>
+				<td id=subject><a href=#>제목제목</a></td>
+				<td>신지혜</td>
+				<td>2019-01-25 16:39</td>
+				<%-- <td><fmt:formatDate type="date" value=""/></td> --%>
+			</tr>
+		</table>
+		<div class="paginate">
+			<input type="button" value="<<"> <input type="button"
+				value="<"> <input type="button" value="1"> <input
+				type="button" value=">"> <input type="button" value=">>">
+		</div>
+	</div>
+	
+</article>
+
+<%@ include file="../footer.jsp" %>

@@ -1,0 +1,19 @@
+function newDonationClass(id) {
+	if(id == "") {
+		location.href = "/login";
+	} else {
+		location.href = "/give/donationWriteForm";
+	}
+}
+
+function go_back() {
+	window.history.back();
+}
+
+function count() {
+	document.getElementById('text-area').addEventListener('keyup', checkByte);
+	var countSpan = document.getElementById('count');
+	var message = '';
+	var MAX_MESSAGE_BYTE = 30;
+	document.getElementById('max-count').innerHTML = MAX_MESSAGE_BYTE.toString();
+}

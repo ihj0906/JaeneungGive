@@ -1,0 +1,163 @@
+@charset "UTF-8";
+
+section#contents_area aside {
+	padding-top: 20px !important;
+}
+
+section#contents_area .wrap_contents {
+	padding-top: 20px !important;
+}
+
+section#content aside {
+	padding-top: 20px !important;
+}
+
+section#content .wrap_contents {
+	padding-top: 20px !important;
+}
+
+/* 상단 메뉴 css 시작 */
+nav.tabmenu {
+	width: 800px;
+	height: 40px;
+	background: #eff1f2;
+	margin: auto;
+}
+
+nav.tabmenu ul {
+	padding: 0px;
+}
+
+nav.tabmenu ul li {
+	float: left;
+	padding: 10px 0;
+	list-style: none;
+}
+
+nav.tabmenu ul li:first-child {
+	background: none;
+}
+
+nav.tabmenu ul li a {
+	display: block;
+	height: 20px;
+	padding: 0 30px;
+	font-size: 15px;
+	color: #6e7482;
+	text-decoration: none;
+}
+
+nav.tabmenu ul li.on {
+	background: #6e7482 none;
+}
+
+nav.tabmenu ul li.on a {
+	color: #FFF;
+}
+
+/* 상단 메뉴 css 끝 */
+
+.content {
+	padding: 20px;
+	min-height: 270px;
+}
+
+.btnArea {
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	padding: 10px 0;
+	border-top: 1px solid #d7d5d5;
+	text-align: center;
+	background-color: #fbfafa;
+}
+
+table {
+	min-width: 800px;
+	margin: auto; 
+	table-layout: fixed;
+	border: 1px solid #d7d5d5;
+	line-height: 180%;
+}
+
+th {
+	width: 110px;
+	padding: 10px 0 8px 20px;
+	border-top: 1px solid #e8e8e8;
+	border-right: 1px solid #e8e8e8;
+	background-color: #fbfafa;
+}
+
+td a {
+	text-decoration: none;
+	color: #000000;
+}
+
+td {
+	width: auto;
+	padding: 10px 0 8px 10px;
+	border-top: 1px solid #e8e8e8;
+}
+
+table.qnaList tr th, td {
+	border-top: 0;
+}
+
+.qnaList {
+	width: 50%; margin-top : 20px;
+	padding: 2px;
+	border-collapse: collapse;
+	text-align: center;
+	margin-top: 20px;
+}
+
+.qnaList {
+	width: 100%; margin-top : 20px;
+	padding: 2px;
+	border-collapse: collapse;
+	text-align: center;
+	margin-top: 20px;
+}
+
+.qnaList th {
+	background-color: #e8e8e8;
+	padding: 10px;
+	border: 1px solid #e8e8e8;
+}
+
+.qnaList td {
+	padding: 10px;
+	border-bottom: solid 1px #b4b4b4;
+	text-align: center;
+}
+
+.qnaList td a {
+	text-decoration: none;
+	color: #000;
+}
+
+td input, td textarea {
+	padding: 2px 2px 2px 4px;
+	width: 640px;
+	height: 30px;
+	color: #202020;
+	border: 1px solid #d9d9d9;
+}
+
+td input#date {
+	width: 70px;
+	text-align: center;
+}
+
+td textarea {
+	height: 350px;
+	resize: none;
+	font-weight: normal;
+}
+
+div.paginate {
+	width: 160px;
+	padding: 30px;
+	margin: auto;
+	
+}

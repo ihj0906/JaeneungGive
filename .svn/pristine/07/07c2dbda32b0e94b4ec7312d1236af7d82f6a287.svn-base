@@ -1,0 +1,26 @@
+package service;
+
+import java.util.ArrayList;
+
+import dao.GiveDao;
+import dto.Donation;
+
+public class GiveService {
+	
+	private GiveDao giveDao;
+	
+	public GiveService(GiveDao giveDao) {
+		this.giveDao = giveDao;
+	}
+	
+	public ArrayList<Donation> listdonation() {
+		ArrayList<Donation> donationList = giveDao.listDonation();
+		return donationList;
+	}
+	
+	public int regDonationClass(Donation donation) {
+		int result = giveDao.regDonationClass(donation);
+		return result;
+	}
+
+}

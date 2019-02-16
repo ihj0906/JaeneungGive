@@ -1,0 +1,34 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div class="sidemenu">
+		<h2>쪽지</h2>
+		<hr>
+		<ul>
+			<li><a href="#">받은 쪽지함</a></li>
+			<li><a href="#">보낸 쪽지함</a></li>
+		</ul>
+	</div>
+
+
+	<div class="section">
+		<h4>쪽지 쓰기</h4>
+		<!-- 기부 / 교환 글 카테고리 출력 -->
+		<p>
+			<button class="btn">기부</button>
+			글제목이 들어갈 장소입니다.
+		</p>
+		<hr>
+		<p>받는 사람 김ㅇㅇ</p>
+		<hr>
+		<textarea rows="30" cols="100">본문이 들어갈 장소입니다.</textarea>
+
+	</div>
+</body>
+</html>

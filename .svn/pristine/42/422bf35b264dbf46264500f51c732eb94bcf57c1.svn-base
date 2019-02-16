@@ -1,0 +1,7 @@
+function newDonationClass(id) {
+	if(id == undefined) {
+		location.href = "/login";
+	} else {
+		location.href = "/give/donationWriteForm";
+	}
+}

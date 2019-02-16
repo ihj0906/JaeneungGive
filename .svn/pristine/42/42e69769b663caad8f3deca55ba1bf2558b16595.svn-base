@@ -1,0 +1,39 @@
+package controller;
+
+import java.util.ArrayList;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import dto.Donation;
+import service.GiveService;
+
+@Controller
+public class GiveController {
+	
+	@Autowired
+	private GiveService giveSvc;
+	
+	@RequestMapping("/give/donation")
+	public String listdonation(Model model) {
+		ArrayList<Donation> donationList = giveSvc.donationList();
+		model.addAttribute("donationList", donationList);
+		return "give/donation";
+	}
+	
+	@RequestMapping("/give/donationWriteForm")
+	public String donationWriteForm() {
+		return "give/donationWriteForm";
+	}
+	
+	@RequestMapping(value="/regDonationClass", method=RequestMethod.POST)
+	public String regDonationClass(Donation donation, Model model) {
+		giveSvc.regDonationClass(donation);
+		return "redirect:/give/donation";
+	}
+	
+
+}

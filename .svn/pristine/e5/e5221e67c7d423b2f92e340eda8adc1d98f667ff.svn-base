@@ -1,0 +1,52 @@
+package config;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+import controller.JoinController;
+import controller.LoginController;
+import controller.LogoutController;
+import dao.MemberDao;
+import service.JoinService;
+import service.LoginService;
+
+@Configuration
+public class ControllerConfig implements WebMvcConfigurer {
+	@Autowired
+	private JoinService joinSvc;
+	
+	@Autowired
+	private LoginService loginSvc;
+
+	@Autowired
+	private MemberDao memberDao;
+
+	@Override
+	public void addViewControllers(ViewControllerRegistry registry) {
+		registry.addViewController("/index").setViewName("index");
+	}
+
+	@Bean
+	public JoinController joinController() {
+		JoinController joinCtrl = new JoinController();
+		joinCtrl.setJoinService(joinSvc);
+		return joinCtrl;
+	}
+	
+	@Bean
+	public LoginController loginController() {
+		LoginController loginCtrl = new LoginController();
+		loginCtrl.setLoginService(loginSvc);
+		return loginCtrl;
+	}
+	
+	@Bean
+	public LogoutController logoutController() {
+		LogoutController logoutCtrl = new LogoutController();
+		return logoutCtrl;
+	}
+	
+}

@@ -1,0 +1,51 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ include file="../header.jsp" %>
+<%@ include file="sidemenu.jsp"%>
+
+
+	<div class="note_area">
+		<h4>보낸 쪽지함</h4>
+		<a class="del_btn" href="#"><span class="bu_del"></span>삭제</a>
+		<table class="notelist">
+			<tr>
+				<th width=10%;><input type="checkbox"></th>
+				<th width=10%;>분류</th>
+				<th width=50%>글제목</th>
+				<th width=10%>받는사람</th>
+				<th width=20%>보낸날짜</th>
+			</tr>
+			<tr>
+				<td><input type="checkbox"></td>
+				<td>기부</td>
+				<td id=subject><a href=#>제목제목</a></td>
+				<td>임호준</td>
+				<td>2019-01-25 15:53</td>
+				<%-- <td><fmt:formatDate type="date" value=""/></td> --%>
+			</tr>
+			<tr>
+				<td><input type="checkbox"></td>
+				<td>기부</td>
+				<td id=subject><a href=#>제목제목</a></td>
+				<td>정재욱</td>
+				<td>2019-01-25 16:38</td>
+				<%-- <td><fmt:formatDate type="date" value=""/></td> --%>
+			</tr>
+			<tr>
+				<td><input type="checkbox"></td>
+				<td>교환</td>
+				<td id=subject><a href=#>제목제목</a></td>
+				<td>신지혜</td>
+				<td>2019-01-25 16:39</td>
+				<%-- <td><fmt:formatDate type="date" value=""/></td> --%>
+			</tr>
+		</table>
+		<div class="paginate">
+			<input type="button" value="<<"> <input type="button"
+				value="<"> <input type="button" value="1"> <input
+				type="button" value=">"> <input type="button" value=">>">
+		</div>
+	</div>
+	
+
+<%@ include file="../footer.jsp" %>

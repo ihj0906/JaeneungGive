@@ -1,0 +1,97 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Jaeneung Give</title>
+
+<link href="css/index.css" rel="stylesheet" type="text/css" />
+<link href="css/member.css" rel="stylesheet" type="text/css" />
+<link href="css/message.css" rel="stylesheet" type="text/css" />
+<link href="css/report.css" rel="stylesheet" type="text/css" />
+
+<!-- <script type="text/javascript" src="js/jaeneung.js"><</script> -->
+
+</head>
+<body>
+
+<div id="wrap">
+
+<!-- 헤더 시작 -->
+<header>
+
+	<nav class="top">
+		<div class="top_container">
+			<div id="logo">
+				<a href="#">
+					<img src="images/logo.gif" width=100% height=100% alt="Jaeneung Give"/>
+				</a>
+			</div>
+			<nav id="logo_menu">
+				<ul>
+					<!-- <li><a href="#">로그인</a></li>
+					<li>&emsp; |</li>
+					<li>&emsp;<a href="#">회원가입</a></li> -->
+					<li><a href="#">'아이디'</a> 님 환영합니다.</li>
+					<li>&emsp;<a href="#"><img src="images/bell.gif">(1)</a></li>
+					<li>&emsp; |</li>
+					<li>&emsp;<a href="#">로그아웃</a></li>
+				</ul>
+			</nav>
+		</div>
+	</nav>
+	
+	<nav class="header_menu">
+		<div class="header_menu_container">
+		<ul>
+			<a href="#"><li>
+				&emsp;사이트소개&emsp;∨
+				<ul>
+					<a href="#"><li>재능기부란?</li></a>
+					<a href="#"><li>이용방법</li></a>
+				</ul>
+			</li></a>
+			<a href="#"><li>
+				&emsp;재능기부&emsp;∨
+				<ul>
+					<a href="#"><li>언어</li></a>
+					<a href="#"><li>예술</li></a>
+					<a href="#"><li>스포츠</li></a>
+					<a href="#"><li>컴퓨터</li></a>
+					<a href="#"><li>기타</li></a>
+				</ul>
+			</li></a>
+			<a href="#"><li id="menu">
+				&emsp;재능교환&emsp;∨
+				<ul>
+					<a href="#"><li>언어</li></a>
+					<a href="#"><li>예술</li></a>
+					<a href="#"><li>스포츠</li></a>
+					<a href="#"><li>컴퓨터</li></a>
+					<a href="#"><li>기타</li></a>
+				</ul>
+			</li></a>
+			<a href="#"><li id="menu">
+				&emsp;마이페이지&emsp;∨
+				<ul>
+					<a href="#"><li>회원정보</li></a>
+					<a href="#"><li>재능기부내역</li></a>
+					<a href="#"><li>재능교환내역</li></a>
+					<a href="#"><li>재능판매내역</li></a>
+				</ul>
+			</li></a>
+			<a href="#"><li id="menu">
+				&emsp;고객센터&emsp;∨
+				<ul>
+					<a href="qna/qna.jsp"><li>Q&amp;A</li></a>
+					<a href="#"><li>FAQ</li></a>
+				</ul>
+			</li></a>
+		</ul>
+		</div>
+	</nav>
+	
+	<div class="clear"></div>
+</header>
+<!-- 헤더 끝 -->

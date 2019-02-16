@@ -1,0 +1,61 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>비밀번호 찾기</title>
+<style>
+div {
+	text-align: center;
+}
+
+table {
+	margin-left: auto;
+	margin-right: auto;
+	text-align: left;
+}
+
+#pagetitle {
+	margin: 0 0 40px;
+}
+
+#pagetitle h1 {
+	text-align: center;
+	color: black;
+	font-weight: 800;
+}
+
+#pagetitle h1 span {
+	border-bottom: 2px solid black;
+	padding: 0 2px 2px;
+}
+
+
+
+</style>
+</head>
+<body>
+<div>
+	<big><b><div>비밀번호 찾기</div></b></big>
+	<br>
+	<input type="text" id="m_name" placeholder="이름">
+	<br>
+	<input type="text" id="m_email" placeholder="이메일">
+	<br>
+	<input type="text" id="m_email" placeholder="아이디">
+	<br>
+	<button style="height: 25px; width: 173px">확인</button>
+	<br>
+	<font size="1">
+		
+		 </font>
+		 </div>	 
+	<script
+		src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+	<script>
+		
+	</script>
+</body>
+</html>

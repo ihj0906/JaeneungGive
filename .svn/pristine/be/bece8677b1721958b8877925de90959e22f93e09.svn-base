@@ -1,0 +1,31 @@
+// 쪽지 삭제시 
+/**
+ * checkbox로 선택한 쪽지 삭제시 사용
+ * 
+ * @returns
+ */
+function delete_note(noteType) {
+	var checkBox = document.getElementById("note_check");
+	if (checkBox.checked != true) {
+		alert("쪽지를 선택해주세요");
+	} else {
+		document.message_form.action = "/message/delete&"+noteType;
+		document.message_form.submit();
+	}
+}
+
+/**
+ * 쪽지 읽기에서 삭제 시 사용
+ * 
+ * @returns
+ */
+function del_note(noteType) {
+	document.message_form.action = "/message/delete&"+noteType;
+	document.message_form.submit();
+}
+
+function test() {
+	alert("테스트");
+}
+
+

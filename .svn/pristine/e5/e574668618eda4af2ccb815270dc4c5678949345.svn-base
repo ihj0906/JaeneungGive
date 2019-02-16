@@ -1,0 +1,68 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%-- <%@ include file="../header.jsp" %> --%>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="css/index.css" type="text/css">
+<title>Jaeneung Give</title>
+</head>
+<body>
+	<nav id="topMenu">
+		<ul>
+			<li class="topMenuLi">
+				<a class="menuLink" href="#">사이트소개</a>
+			<ul class="subMenu">
+				<li><a class="subMenuLink longLink">재능기부란?</a></li>
+				<li><a class="subMenuLink longLink">사이트 이용방법</a></li>
+			</ul>
+			</li>
+			<li>|</li>
+			<li class="topMenuLi">
+				<a class="menuLink" href="#">재능기부</a>
+			<ul class="subMenu">
+				<li><a class="subMenuLink longLink">예술</a></li>
+				<li><a class="subMenuLink longLink">스포츠</a></li>
+				<li><a class="subMenuLink longLink">언어</a></li>
+				<li><a class="subMenuLink longLink">컴퓨터</a></li>
+				<li><a class="subMenuLink longLink">기타</a></li>
+			</ul>	
+			</li>
+			<li>|</li>
+			<li class="topMenuLi">
+				<a class="menuLink" href="#">재능교환</a>
+			<ul class="subMenu">
+				<li><a class="subMenuLink longLink">예술</a></li>
+				<li><a class="subMenuLink longLink">스포츠</a></li>
+				<li><a class="subMenuLink longLink">언어</a></li>
+				<li><a class="subMenuLink longLink">컴퓨터</a></li>
+				<li><a class="subMenuLink longLink">기타</a></li>
+			</ul>	
+			</li>
+			<li>|</li>
+			<li class="topMenuLi">
+				<a class="menuLink" href="#">마이페이지</a>
+			<ul class="subMenu">
+				<li><a class="subMenuLink longLink">회원정보</a></li>
+				<li><a class="subMenuLink longLink">재능기부내역</a></li>
+				<li><a class="subMenuLink longLink">재능교환내역</a></li>
+			</ul>
+			</li>
+			<li>|</li>
+			<li class="topMenuLi">
+				<a class="menuLink" href="#">고객센터</a>
+			<ul class="subMenu">
+				<li><a class="subMenuLink longLink">Q&amp;A</a></li>
+				<li><a class="subMenuLink longLink">FAQ</a></li>
+			</ul>
+			</li>
+			<li>|</li>
+		</ul>
+	</nav>
+	
+</body>
+</html>
+
+<%-- <%@ include file="../footer.jsp" %> --%>

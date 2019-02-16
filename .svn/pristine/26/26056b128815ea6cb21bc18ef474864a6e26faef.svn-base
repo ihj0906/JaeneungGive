@@ -1,0 +1,86 @@
+package dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+
+import javax.sql.DataSource;
+
+import dto.Donation;
+
+public class GiveDao {
+	
+	DataSource dataSource;
+	public GiveDao(DataSource dataSource) {
+		this.dataSource = dataSource;
+	}
+	
+	public ArrayList<Donation> listDonation() {
+		ArrayList<Donation> donationList = new ArrayList<Donation>();
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "select * from donation";
+		try {
+			conn = dataSource.getConnection();
+			pstmt = conn.prepareStatement(sql);
+//			pstmt.setInt(1, donation_no);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				Donation donation = new Donation();
+				donation.setDonation_no(rs.getInt("donation_no"));
+				donation.setTalent1(rs.getString("talent1"));
+				donation.setTalent2(rs.getString("talent2"));
+				donation.setPeople(rs.getInt("people"));
+				donation.setId(rs.getString("id"));
+				donation.setSubject(rs.getString("subject"));
+				donation.setContent(rs.getString("content"));
+				donation.setLocation(rs.getString("location"));
+				donation.setClosing_date(rs.getString("closing_date"));
+				donationList.add(donation);
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) rs.close();
+				if (pstmt != null) pstmt.close();
+				if (conn != null) conn.close();
+			} catch(Exception e) {}
+		}
+		return donationList;
+	}
+	
+	public int regDonationClass(Donation donation) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = "insert into donation (talent1, talent2, people, id, subject, content, location, closing_date) values (?,?,?,?,?,?,?,?)";
+		int result = 0;
+		try {
+			conn = dataSource.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, donation.getTalent1());
+			pstmt.setString(2, donation.getTalent2());
+			pstmt.setInt(3, donation.getPeople());
+			pstmt.setString(4, donation.getId());
+			pstmt.setString(5, donation.getSubject());
+			pstmt.setString(6, donation.getContent());
+			pstmt.setString(7, donation.getLocation());
+			pstmt.setString(8, donation.getClosing_date());
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (pstmt != null) pstmt.close();
+				if (conn != null) conn.close();
+			} catch(Exception e) {}
+		}
+		return result;
+	}
+	
+	
+	
+	
+}

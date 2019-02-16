@@ -1,0 +1,55 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ include file="../header.jsp" %>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>고객센터</title>
+<link rel="stylesheet" type="text/css" href="../css/qna/qna.css" />
+</head>
+<body>
+
+	<nav class="tabmenu">
+		<ul>
+			<li class="on"><a href="#">문의 내역</a></li>
+			<li><a href="#">문의 하기</a></li>
+			<li><a href="#">자주 묻는 질문</a></li>
+		</ul>
+	</nav>
+	<div class="note_area">
+		<h4>[아이디]님의 문의 내역 입니다.</h4>
+		<table class="notelist">
+			<tr>
+				<th width=60%>글제목</th>
+				<th width=15%>처리상태</th>
+				<th width=25%>등록일</th>
+			</tr>
+			<tr>
+				<td id=subject><a href=#>제목제목</a></td>
+				<td>처리중</td>
+				<td>2019-01-25 15:53</td>
+			</tr>
+			<tr>
+				<td id=subject><a href=#>제목제목</a></td>
+				<td>처리완료</td>
+				<td>2019-01-25 16:38</td>
+			</tr>
+			<tr>
+				<td id=subject><a href=#>제목제목</a></td>
+				<td>처리완료</td>
+				<td>2019-01-25 16:39</td>
+			</tr>
+		</table>
+		<div class="paginate">
+			<input type="button" value="<<">
+			<input type="button" value="<">
+			<input type="button" value="1">
+			<input type="button" value=">">
+			<input type="button" value=">>">
+		</div>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,62 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ include file="../header.jsp" %>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="report.css" />
+<title>고객센터</title>
+</head>
+<body>
+
+	<div module="calendar_Write">
+	<!--@css(/css/module/calendar/write.css)-->
+	<div class="header">
+		<h1>문의 글 작성</h1>
+	</div>
+	<div class="content">
+		<table border="1" summary="">
+			<tr>
+				<th scope="row">아이디</th>
+				<td>
+					<input type = "text" name = "myname" size = "50">
+				</td>
+			</tr>
+			<tr>
+				<th scope="row">제목</th>
+				<td>
+					<input type = "text" name = "myname" size = "50">
+				</td>
+			</tr>
+			<tr>
+				<th scope="row">연락처</th>
+				<td>
+					<input type = "text" name = "myname" size = "50">
+				</td>
+			</tr>
+			<tr>
+				<th scope="row">내용</th>
+				<td>
+					<textarea name="content" rows = "14" cols = "50"></textarea><BR>
+				</td>
+			</tr>
+			<tr>
+				<th scope="row">첨부파일</th>
+				<td width="343" colspan="5">
+						<input type="file" name="image">
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="btnArea">
+		<input class="btn" type="button" value="등록" onClick="">
+		<input class="btn" type="button" value="취소" onClick="">
+	</div>
+	</div>
+
+</body>
+</html>
+
+<%@ include file="../footer.jsp" %>

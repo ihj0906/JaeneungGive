@@ -1,0 +1,61 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ include file="../header.jsp" %>
+
+<link href="/JaeneungGive/css/give.css" rel="stylesheet" type="text/css" />
+
+<!-- 메인 시작 -->
+<article>
+
+	<div class="search">
+		<div class="search_container">
+			<input type="text" placeholder="검색어를 입력해주세요"  />
+			<input type="button" value="검색" />
+		</div>
+	</div>
+	
+	<div class="give_menu">
+		<ul>
+		<a href="#"><li>언어</li></a>
+		<a href="#"><li>예술</li></a>
+		<a href="#"><li>스포츠</li></a>
+		<a href="#"><li>컴퓨터</li></a>
+		<a href="#"><li>그 외</li></a>
+		</ul>
+	</div>
+	
+	<div class="give">
+		<table class="give_list">
+		<thead>
+		<tr>
+			<td>기부 재능</td>
+			<td>희망 재능</td>
+			<td>제목</td>
+			<td>내용</td>
+			<td>위치</td>
+			<td>작성자</td>
+			<td>D-DAY</td>
+			<td>스크랩</td>
+		</tr>
+		</thead>
+		<tr>
+			<td>한국어</td>
+			<td>영어</td>
+			<td><a href="#">영어를 잘하고싶어요.</a></td>
+			<td>친구 해요~</td>
+			<td>노원구</td>
+			<td>외국타조</td>
+			<td>D-6</td>
+			<td>Y/N</td>
+		</tr>
+		</table>
+	</div>	
+	
+	
+	</div>
+	
+	<div class="clear"></div>
+</article>
+<!-- 메인 끝 -->
+
+<%@ include file="../footer.jsp" %>

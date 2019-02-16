@@ -1,0 +1,26 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ include file="../header.jsp"%>
+<link href="/css/member.css" rel="stylesheet"
+	type="text/css" />
+<article>
+
+	<div id=member>
+		<big><b><div>로 그 인</div></b></big> <br>
+		<form method="post">
+			<input type="text" id="id" name="id" placeholder="아이디"> <br>
+			<input type="password" id="password" name="password"
+				placeholder="비밀번호"> <br>
+			<button style="height: 25px; width: 173px">로그인</button>
+			<br> <font size="1"> <input type='checkbox' />로그인 상태 유지
+				<hr width="9%"> <a href="/demo/register">아이디찾기</a> <a
+				href="/demo/register">/비밀번호 찾기</a> <a
+				href="/join/terms">/회원가입</a>
+			</font>
+
+		</form>
+	</div>
+
+</article>
+
+<%@ include file="../footer.jsp"%>

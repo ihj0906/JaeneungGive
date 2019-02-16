@@ -1,0 +1,63 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ include file="../header.jsp" %>
+<script>
+	$(document).ready(
+			function() {
+
+				$(".findBtn").click(
+						function() {
+							var name = $('#name').val(); 
+							var email = $('#email').val();
+							if (!name) {
+								$(".findResult .msg").text("아이디를 입력해주세요");
+								$(".findResult .msg").attr("style",
+										"color:#f00");
+								$('#name').focus();
+							} else if (!email){
+								$(".findResult .msg").text("이메일을 입력해주세요");
+								$(".findResult .msg").attr("style",
+										"color:#f00");
+								$('#email').focus();
+							}else {
+								$.ajax({
+									url : "/findId/Result",
+									type : "post",
+									data : {"name": name, "email": email},
+									success : function(data) {
+										if (data != "") {
+											$(".findResult .msg").text(
+													"고객님의 아이디는"+data+"입니다");
+											$(".findResult .msg").attr(
+													"style", "color:#f00");
+											document.formm.id.focus();
+										} else {
+											$(".findResult .msg").text(
+													"일치하는 회원정보가 없습니다.");
+											$(".findResult .msg").attr(
+													"style", "color:#00f");
+											document.formm.checkid.value=query;
+										}
+									}
+								}); // ajax 끝
+
+							}
+						});
+			});
+</script>
+<article>
+
+<div id=member>
+	<big><b><div><span>아이디 찾기</span></div></b></big> <br>
+			이름 <input type="text" id="name" placeholder="이름"><br>
+		이메일 <input type="text" id="email" placeholder="이메일"> <br> <input
+			type="button" name="checkidbtn" class="findBtn"
+			style="height: 25px; width: 173px" value="찾기"> <br> <font size="1"></font>
+			 <p class="findResult"><span
+				class="msg"></span>
+		</p>
+	</div>	
+	
+</article> 
+
+<%@ include file="../footer.jsp" %>

@@ -1,0 +1,25 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ include file="../header.jsp" %>
+
+<article>
+
+<div id=member>
+	<big><b><div>비밀번호 찾기</div></b></big>
+	<br>
+	<input type="text" id="m_name" placeholder="이름">
+	<br>
+	<input type="text" id="m_email" placeholder="이메일">
+	<br>
+	<input type="text" id="m_email" placeholder="아이디">
+	<br>
+	<button style="height: 25px; width: 173px">확인</button>
+	<br>
+	<font size="1">
+		
+		 </font>
+		 </div>	
+
+</article>
+
+<%@ include file="../footer.jsp" %>
