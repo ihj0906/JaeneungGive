@@ -25,7 +25,7 @@
 	<c:forEach var="mydonation" items="${bmDonationList}">
 		<tr>
 			<td>${mydonation.talent1}&ensp;/&ensp;${mydonation.talent2}</td>
-			<td>${mydonation.people}</td>
+			<td>${mydonation.count}&ensp;/&ensp;${mydonation.people}</td>
 			<td style="white-space: nowrap; width: 50px;"><a href="/give/donationDetail&${mydonation.no}">${mydonation.subject}</a></td>
 			<td>${mydonation.location}</td>
 			<td>${mydonation.closing_date}&ensp;</td>
