@@ -26,7 +26,6 @@
 <!-- <link href="/css/member.css" rel="stylesheet" type="text/css" />
 <link href="/css/message.css" rel="stylesheet" type="text/css" />
 <link href="/css/report.css" rel="stylesheet" type="text/css" /> -->
-
 <!-- <script type="text/javascript" src="js/jaeneung.js"></script> -->
 </head>
 <body>
@@ -73,7 +72,6 @@
 											href="javascript:void(0);" onclick="menu_list('6')">그외</a></li>
 									</ul>
 								</li>
-								<!-- 						<li><a href="/give/exchange.jsp">&emsp;재능교환&emsp;∨</a> -->
 								<li class="header_dropdown_menu"><a
 									href="javascript:void(0);" onclick="menu_list('7')">&emsp;재능교환&emsp;</a>
 									<ul class="header_dropdown">
