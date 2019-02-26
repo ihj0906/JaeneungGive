@@ -16,9 +16,10 @@
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
 			<param-value>
+			<!-- config 사용 관련 -->
 				config.MvcConfig
 				config.DaoConfig
-				config.ControllerConfig				
+				config.ControllerConfig
 			</param-value>
 		</init-param>
 		<init-param>

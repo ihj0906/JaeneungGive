@@ -15,11 +15,11 @@
 	
 	<thead>
 	<tr>
-		<td width="15%">기부 재능</td>
-		<td width="15%">희망 재능</td>
-		<td width="40%">제목</td>
-		<td width="15%">마감일</td>
-		<td width="15%">진행 상태</td>
+		<th width="15%">기부 재능</th>
+		<th width="15%">희망 재능</th>
+		<th width="40%">제목</th>
+		<th width="15%">마감일</th>
+		<th width="15%">진행 상태</th>
 		
 	</tr>
 	</thead>

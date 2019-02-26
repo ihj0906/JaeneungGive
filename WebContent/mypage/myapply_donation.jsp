@@ -15,11 +15,11 @@
 	<table class="mygiveList_table">
 	<thead>    
 	<tr>
-			<td width="15%">재능명</td>
-			<td width="40%">제목</td>
-			<td width="15%">작성자</td>
-			<td width="15%">신청일</td>
-			<td width="15%">진행 상태</td>
+			<th width="15%">재능명</th>
+			<th width="40%">제목</th>
+			<th width="15%">작성자</th>
+			<th width="15%">신청일</th>
+			<th width="15%">진행 상태</th>
 			
 		</tr>
 	</thead>

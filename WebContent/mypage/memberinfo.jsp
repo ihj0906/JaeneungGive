@@ -19,9 +19,11 @@
 
 				<tr>
 					<td style="width: 110px;">아이디</td>
-					<td style="width: 100px"><input type="text"
-						value="${member.id}" disabled><input type="hidden"
-						name="id" id="id" value="${member.id}"></td>
+					<td style="width: 100px;">
+					
+ <!-- disabled 읽기 쓰기 전부 X get post방식 둘다 못넘김 readonly 읽을 수 만 있음 get post 방식 넘기기 가능 -->
+					<input type="text" value="${member.id}" disabled>
+					<input type="hidden" name="id" id="id" value="${member.id}"></td>
 				</tr>
 				<tr>
 					<td>비밀번호</td>
@@ -31,25 +33,21 @@
 				</tr>
 				<tr>
 					<td>비밀번호 확인</td>
-					<td><input type="password" name="confirmPassword"
-						id="confirmPassword" onclick="engNumOnly()"/></td>
+					<td><input type="password" name="confirmPassword" id="confirmPassword" onclick="engNumOnly()"/></td>
 					<td><span class="msg" id="msgConfirmPassword"></span></td>
 				</tr>
 				<tr>
 					<td>이름</td>
-					<td><input type="text" disabled name="name"
-						value="${member.name}" /></td>
+					<td><input type="text" disabled name="name" value="${member.name}" /></td>
 				</tr>
 				<tr>
 					<td>휴대전화</td>
-					<td><input type="text" name="phone" id="phone"
-						value="${member.phone}" onclick="numOnly()"/></td>
+					<td><input type="text" name="phone" id="phone" value="${member.phone}" onclick="numOnly()"/></td>
 					<td><span class="msg" id="msgPhone" style="margin-left: 20px;">(하이픈('-')을 제외하고 입력 해 주세요.)</span></td>
 				</tr>
 				<tr>
 					<td>이메일</td>
-					<td><input type="text" name="email" id="email"
-						value="${member.email}" onclick="forMail()"/></td>
+					<td><input type="text" name="email" id="email" value="${member.email}" onclick="forMail()"/></td>
 					<td><span class="msg" id="msgEmail"></span></td>
 				</tr>
 				<tr>

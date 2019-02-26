@@ -15,11 +15,11 @@
 	<table class="mygiveList_table">
 	<thead>
 	<tr>
-		<td width="15%">기부 재능</td>
-		<td width="15%">모집 인원</td>
-		<td width="40%">제목</td>
-		<td width="15%">위치</td>
-		<td width="15%">마감일</td>
+		<th width="15%">기부 재능</th>
+		<th width="15%">모집 인원</th>
+		<th width="40%">제목</th>
+		<th width="15%">위치</th>
+		<th width="15%">마감일</th>
 	</tr>
 	</thead>
 	<c:forEach var="mydonation" items="${bmDonationList}">

@@ -14,10 +14,10 @@
 	<table class="mygiveList_table">
 	<thead>
 	<tr>
-		<td width="15%">기부 재능</td>		
-		<td width="50%">제목</td>
-		<td width="15%">마감일</td>
-		<td width="15%">진행 상태</td>
+		<th width="15%">기부 재능</th>		
+		<th width="50%">제목</th>
+		<th width="15%">마감일</th>
+		<th width="15%">진행 상태</th>
 	</tr>
 	</thead>
 	<c:forEach var="mywriteDonation" items="${mywriteDonationList}">

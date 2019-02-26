@@ -8,10 +8,10 @@
 	<img class="faq_img" src="/images/faq.jpg" />
 </div>
 	<nav class="tabmenu">
-	<input type="hidden" id="qnaId" value="${loginInfo.id }">
+	<input type="hidden" id="qnaId" value="${loginInfo.id}">
 		<ul>
-			<li onclick="select_list('1')"><a>문의 내역</a></li>
-			<li class="on" onclick="select_list('2')"><a>문의 하기</a></li>
+			<li onclick="select_list('1')"><a href="#">문의 내역</a></li>
+			<li class="on" onclick="select_list('2')"><a href="#">문의 하기</a></li>
 			<li><a href="/qna/faq">자주 묻는 질문</a></li>
 		</ul>
 	</nav>
