@@ -1,0 +1,117 @@
+function newDonationClass(id) {
+	if (id == "") {
+		location.href = "/login";
+	} else {
+		location.href = "/give/donationWriteForm";
+	}
+}
+
+function newExchangeClass(id) {
+	if (id == "") {
+		location.href = "/login";
+	} else {
+		location.href = "/give/exchangeWriteForm";
+	}
+}
+
+function go_back() {
+	window.history.back();
+}
+
+function regDonationClass() {
+	var form = document.give_frm;
+	var talent1 = document.getElementById("talent1");
+	var talent1_ = talent1.options[talent1.selectedIndex].value;
+	if (form.talent2.value == "" || form.people.value == ""
+			|| form.subject.value == "" || form.content.value == ""
+			|| form.location.value == "" || form.closing_date.value == "") {
+		alert("빈칸을 모두 채워주세요.");
+	} else if (talent1_ == "선택") {
+		alert("기부재능 카테고리를 선택하세요.");
+	} else {
+		form.category.value = "기부";
+		form.key.value = "";
+		var now = new Date();
+		alert(now);
+		form.submit();
+	}
+
+}
+
+function regExchangeClass() {
+	document.regDonationForm.category.value = "교환";
+	document.regDonationForm.key.value = "";
+}
+
+/**
+ * 북마크 표시 기능
+ * 
+ * @param board_id
+ *            게시판 번호 ( 1= 기부 , 2 = 교환)
+ * @returns
+ */
+function bookmark(board_id, board_no) {
+	$.ajax({
+		url : "/bookmark/check/",
+		type : "post",
+		data : {
+			"board_id" : board_id,
+			"no" : board_no
+		},
+		success : function(data) {
+			if (data == 0) {
+				// 로그인이 되어있지 않은 경우
+				var r = confirm("'스크랩'은 로그인 후 사용가능 합니다. 로그인 하시겠습니까?");
+				if (r == true) {
+					window.location = "http://localhost:8080/login";
+				}
+			} else if (data == 1) {
+				// 로그인이 되어있음져 북마크가 되어 있는 경우 북마크 해제
+				// $('#image').attr("src", "/images/unbookmark.png")
+				$('#' + board_no).attr("src", "/images/unbookmark.png")
+			} else {
+				// 로그인이 되어있으며 북마크가 안되어있는 경우 북마크 설정
+				$('#' + board_no).attr("src", "/images/bookmark.png")
+
+			}
+		}
+	}); // ajax 끝
+}
+
+/**
+ * 교환 신청 폼 입력 신청하기 눌렀을 때 
+ * 입력 안할 경우 입력하란 팝업 알림 
+ * 입력 한 경우 등록 
+ * @returns
+ */
+function applicant() {
+	if (!$('#appli_content').val()) {
+		alert("내용을 입력해주세요");
+		$('#appli_content').focus();
+	} else {
+		$('#appli_form').attr("action", "/applicant/add").submit();
+	}
+}
+
+/**
+ * 교환신청 후 삭제 눌렀을 떄
+ * 
+ * @returns
+ */
+function applicant_del() {
+	$('#appli_form').attr("action", "/applicant/del").submit();
+}
+
+/**
+ * 교환작성자가 신청자 중 한명을 교환대상자로 선정하여 승인 할 때
+ * 
+ * @returns
+ */
+function joinSubmit(confirmId) {
+	var r = confirm("확인을 누르시면 교환신청이 완료되며, 변경하실 수 없습니다. 계속하시려면 [확인]을 눌러주세요");
+	if (r == true) {
+		$('#appli_confirmId').val(confirmId);
+		$('#appli_form').attr("action", "/applicant/submit").submit();
+	}
+
+}

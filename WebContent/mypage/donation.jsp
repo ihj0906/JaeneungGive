@@ -3,6 +3,10 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp" %>
 <%@ include file="mypagesidemenu.jsp" %>   
+
+<section class="top_section">
+</section>
+
 <div class="mygiveList">
 		<h1><span>기 부</span></h1>
 	<table class="mygiveList_table">

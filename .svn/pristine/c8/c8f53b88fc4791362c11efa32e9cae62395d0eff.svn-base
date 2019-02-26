@@ -1,0 +1,35 @@
+package service;
+
+import java.util.ArrayList;
+
+import dao.ApplicantDao;
+import dto.Applicant;
+
+public class ApplicantService {
+	
+	private ApplicantDao applicantDao;
+
+	public ApplicantService(ApplicantDao applicantDao) {
+		this.applicantDao = applicantDao;
+	}
+	
+	public void addApplicant(Applicant applicant) {
+		applicantDao.addApplicant(applicant);
+	}
+	
+	public void delApplicant(int board_no, int board_id,String id) {
+		applicantDao.delApplicant(board_no, board_id, id);
+	}
+	
+	public ArrayList<Applicant> listOfApplicant(int board_no, int board_id ){
+		return applicantDao.listOfApplicant(board_no, board_id);
+	}
+	
+	public Applicant applicant(int board_no, int board_id,String id) {
+		return applicantDao.applicant(board_no, board_id, id);
+	}
+	
+	public void confirmApplicant(Applicant applicant, int progress) {
+		applicantDao.confirmApplicant(applicant,progress);
+	}
+}

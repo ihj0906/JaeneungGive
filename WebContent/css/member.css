@@ -1,12 +1,12 @@
 
-div #member {
+div#member {
 	text-align: center;
+	margin: 60px 0px;
 }
 
-table #join_table {
-	margin-left: auto;
-	margin-right: auto;
+table#join_table {
 	text-align: left;
+    margin: auto;
 }
 
 #pagetitle {
@@ -14,7 +14,6 @@ table #join_table {
 }
 
 #pagetitle h1 {
-	text-align: center;
 	color: black;
 	font-weight: 800;
 }
@@ -22,5 +21,62 @@ table #join_table {
 #pagetitle h1 span {
 	border-bottom: 2px solid black;
 	padding: 0 2px 2px;
+}
+
+.mypagetitle {
+	text-align: center;
+	padding: 40px 0 0 70px;
+}
+
+.mypage_img_div {
+	background-color: #45c3b8;
+	margin: auto;
+	text-align: center;
+}
+.mypage_img {
+	height: 480px;
+}
+
+.idCheckResult {
+	margin: 0px;	/* p태그 기본 마진으로 인한 table 행 두꺼워짐 방지 */
+}
+
+.msg {
+	position: absolute;	/* 메시지 출력으로 인한 테이블 폼 밀림 현상 방지 */
+}
+
+.msg_login {
+	padding-left: 60px;
+	position: absolute;	/* 메시지 출력으로 인한 테이블 폼 밀림 현상 방지 */
+}
+
+.login_form {
+	margin: auto;
+}
+
+.login_form_td{
+	padding: 0px;
+}
+
+.login_button {
+    width: 80px;
+ 	height: 54px;
+ 	text-align: center;
+}
+
+.find_id_Btn {
+    width: 80px;
+	height: 54px;
+ 	text-align: center;
+}
+
+.find_pwd_Btn {
+    width: 80px;
+	height: 82px;
+ 	text-align: center;
+}
+
+.mypage_memberinfo_btn {
+	text-align: right;
 }
 

@@ -26,6 +26,7 @@
 	margin-right: 10px;
 	text-align: center;
 	/* border-right: 1px solid #b4b4b4; */
+	padding-top: 80px;
 	padding-right: 20px;
 	/* 	position: absolute;*/
 	top: 0px;
@@ -56,9 +57,10 @@
 .note_area {
 	/* padding-left: 200px; */
 	float: left;
-	width: 70%;
+	width: 1000px;
 	border-left: 1px solid #b4b4b4;
 	padding-left: 30px;
+	margin: 40px 0;
 }
 
 .notelist {
@@ -74,6 +76,7 @@
 	background-color: #e8e8e8;
 	padding: 10px;
 	border: 1px solid #e8e8e8;
+	text-align: center;
 }
 
 .notelist td {
@@ -82,6 +85,7 @@
 	text-align: center;
 	text-overflow: ellipsis;
 	overflow: hidden;
+	white-space : nowrap;
 	max-width: 500px;
 }
 
@@ -101,6 +105,8 @@
 
 textarea {
 	resize: none;
+	width: 1000px;
+    padding: 15px;
 }
 
 .noteDetail {
@@ -123,9 +129,9 @@ textarea {
 }
 
 .noteDetail #content {
-	padding-top: 20px;
-	padding-bottom: 20px;
+	padding: 20px;
 	border-top: solid 1px #b4b4b4;
+	word-break: break-all;
 	/* text-align: left; */
 }
 
@@ -134,3 +140,15 @@ button.j_category {
 	margin-right: 10px;
 	/* margin-left: 20px; */
 }
+
+/* 쪽지쓰기 폼 받는사람 텍스트  시작 */
+.message_to_member {
+	
+}
+/* 쪽지쓰기 폼 받는사람 텍스트  끝 */
+
+/* 버튼 정렬 시작 */
+.message_btn {
+	text-align: center;
+}
+/* 버튼 정렬 끝 */

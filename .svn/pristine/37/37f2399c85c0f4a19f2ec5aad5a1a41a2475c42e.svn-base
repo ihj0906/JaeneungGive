@@ -1,0 +1,34 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ include file="/admin/admin_header.jsp"%>
+
+<article>
+	<h2 class="menu_board">게시물관리</h2>
+	<div class="table">
+		<table class="board_table">
+			<tr>
+				<th width=5%><input type="checkbox"></th>
+				<th width=5%>카테고리</th>
+				<th width=10%>작성자</th>
+				<th width=30%>제목</th>
+				<th width=45%>내용</th>
+				<th width=5%>삭제</th>
+			</tr>
+			<c:forEach var="adminBoard" items="${adminBoardList}">
+				<tr>
+					<td><input type="checkbox"></td>
+					<td>${adminBoard.category}</td>
+					<td>${adminBoard.id}</td>
+					<td>${adminBoard.subject}</td>
+					<td>${adminBoard.content}</td>
+					<td><input type="button" value="X"></td>
+				</tr>
+			</c:forEach>
+			<tr class="borad_delete_btn">
+				<td colspan="7"><input type="button" value="선택삭제"></td>
+			</tr>
+		</table>
+	</div>
+</article>
+
+<%@ include file="/admin/admin_footer.jsp"%>

@@ -2,6 +2,9 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp"%>
 <%@ include file="sidemenu.jsp"%>
+
+<section class="top_section"></section>
+
 <div class="note_area">
 	<h4>보낸 쪽지함</h4>
 	<form name="message_form">

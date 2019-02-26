@@ -3,8 +3,8 @@ package dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
-import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
 import dto.JoinRequest;
@@ -42,7 +42,6 @@ public class MemberDao {
 				member.setName(rs.getString("name"));
 				member.setUseyn(rs.getInt("useyn"));
 			}
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -200,5 +199,63 @@ public class MemberDao {
 			} catch (Exception e) {
 			}
 		}
+	}
+	
+	public void updateUser(String id) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = "update member set useyn=2 where id = ?";
+		try {
+			conn = dataSource.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e) {
+			}
+		}
+	}
+	
+//	admin memberlist 출력
+	public ArrayList<Member> adminMemberList() {
+		ArrayList<Member> adminMemberList = new ArrayList<Member>();
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "select * from member";
+		try {
+			conn = dataSource.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				Member member = new Member();
+				member.setId(rs.getString("id"));
+				member.setName(rs.getString("name"));
+				member.setEmail(rs.getString("email"));
+				member.setPhone(rs.getString("phone"));
+				member.setUseyn(rs.getInt("useyn"));
+				adminMemberList.add(member);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e) {
+			}
+		}
+		return adminMemberList;
 	}
 }

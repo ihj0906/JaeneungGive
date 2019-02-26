@@ -1,0 +1,40 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ include file="/admin/admin_header.jsp"%>
+
+<article>
+	<h2 class="menu_board">회원관리</h2>
+	<div class="table">
+	<form action="/admin/memberSelectDelete" method="post" name="form">
+		<table class="borad_table">
+			<input type="hidden" value="" id="id" name="id" />
+			<tr>
+				<th width=5%><input type="checkbox"></th>
+				<th width=15%>아이디</th>
+				<th width=15%>이름</th>
+				<th width=25%>이메일</th>
+				<th width=20%>연락처</th>
+				<th width=15%>탈퇴여부</th>
+				<th width=5%>삭제</th>
+			</tr>
+			<c:forEach var="adminMember" items="${adminMemberList}">
+				<tr>
+					<td><input type="checkbox"></td>
+					<td>${adminMember.id}</td>
+					<td>${adminMember.name}</td>
+					<td>${adminMember.email}</td>
+					<td>${adminMember.phone}</td>
+					<td>${adminMember.useyn}</td>
+					<td><input type="button" value="X"
+						onclick="adminMemberDelete('${adminMember.id}')"></td>
+				</tr>
+			</c:forEach>
+			<tr class="borad_delete_btn">
+				<td colspan="7"><input type="button" value="선택삭제"></td>
+			</tr>
+		</table>
+	</form>
+	</div>
+</article>
+
+<%@ include file="/admin/admin_footer.jsp"%>

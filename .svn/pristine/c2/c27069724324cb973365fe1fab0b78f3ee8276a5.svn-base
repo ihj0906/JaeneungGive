@@ -1,0 +1,30 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ include file="/admin/admin_header.jsp"%>
+
+<article>
+	<h2 class="menu_board">Q&amp;A 관리</h2>
+	<div class="table">
+		<table class="borad_table">
+			<tr>
+				<th width=10%>아이디</th>
+				<th width=30%>제목</th>
+				<th width=45%>내용</th>
+				<th width=10%>작성일</th>
+				<th width=5%>처리상태</th>
+			</tr>
+			<tr>
+				<td>ihj</td>
+				<td>문의남깁니다</td>
+				<td>고양이는 최고입니다</td>
+				<td>2019-02-16</td>
+				<td>N</td>
+			</tr>
+			<tr class="borad_delete_btn">
+				<td colspan="5"><input type="button" value="선택삭제"></td>
+			</tr>
+		</table>
+	</div>
+</article>
+
+<%@ include file="/admin/admin_footer.jsp"%>

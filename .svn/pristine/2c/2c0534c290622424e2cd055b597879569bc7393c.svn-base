@@ -1,0 +1,146 @@
+package controller;
+
+import java.util.ArrayList;
+
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import dto.Donation;
+import dto.Exchange;
+import dto.LoginInfo;
+import service.BookmarkService;
+import service.GiveService;
+
+@Controller
+public class GiveController {
+	
+	@Autowired
+	private GiveService giveSvc;
+	
+	@Autowired
+	private BookmarkService bookmarkSvc;
+	
+	/*// 기부 목록 - 전체
+	@RequestMapping("/give/donation")
+	public String donationList(Model model) {
+		ArrayList<Donation> donationList = giveSvc.donationList();
+		model.addAttribute("donationList", donationList);
+		return "give/donation";
+	}
+	
+	// 기부 목록 - 카테고리 별
+	@RequestMapping("/give/donation&{category}")
+	public String donationCategoryList(@PathVariable("category") String category, Model model) {
+		ArrayList<Donation> donationCategoryList = giveSvc.donationCategoryList(category);
+		model.addAttribute("category", category);
+		model.addAttribute("donationCategoryList", donationCategoryList);
+		return "give/donation";
+	}*/
+	
+	// index 검색기능 - 기부
+	@RequestMapping(value="/give/search_give_donation", method={RequestMethod.GET, RequestMethod.POST})
+	public String searchGive_donation(
+			@RequestParam(value="category", required=false) String searchOption,
+			@RequestParam(value="key",  required=false) String keyword, Model model) throws Exception {
+		if(searchOption == null) {
+			keyword = "";
+			ArrayList<Donation> donationList = giveSvc.donationList(keyword);
+			model.addAttribute("donationList", donationList);
+			model.addAttribute("keyword", keyword);
+		} else if (searchOption.equals("기부")) {
+			ArrayList<Donation> donationList = giveSvc.donationList(keyword);
+			model.addAttribute("donationList", donationList);
+			model.addAttribute("keyword", keyword);
+		}
+		return "give/donation";
+	}
+	
+	// index 검색기능 - 교환
+	@RequestMapping(value="/give/search_give_exchange", method={RequestMethod.GET, RequestMethod.POST})
+	public String searchGive_exchange(
+			@RequestParam(value="category", required=false) String searchOption,
+			@RequestParam(value="key", required=false) String keyword, Model model) throws Exception {
+		if(searchOption == null) {
+			keyword = "";
+			ArrayList<Exchange> exchangeList = giveSvc.exchangeList(keyword);
+			model.addAttribute("exchangeList", exchangeList);
+			model.addAttribute("keyword", keyword);
+		} else if (searchOption.equals("교환")) {
+			ArrayList<Exchange> exchangeList = giveSvc.exchangeList(keyword);
+			model.addAttribute("exchangeList", exchangeList);
+			model.addAttribute("keyword", keyword);
+		}
+		return "give/exchange";
+	}
+	
+	
+	// 새 기부 클래스 등록 양식
+	@RequestMapping("/give/donationWriteForm")
+	public String donationWriteForm() {
+		return "give/donationWriteForm";
+	}
+	
+	// 새 기부 클래스 등록 양식
+	@RequestMapping("/give/exchangeWriteForm")
+	public String exchangeWriteForm() {
+		return "give/exchangeWriteForm";
+	}
+	
+	// 새 기부 클래스 등록
+	@RequestMapping(value="/regDonationClass", method=RequestMethod.POST)
+	public String regDonationClass(Donation donation) {
+		giveSvc.regDonationClass(donation);
+		return "redirect:/give/search_give_donation";
+	}
+	
+	// 새 교환 클래스 등록
+	@RequestMapping(value="/regExchangeClass", method=RequestMethod.POST)
+	public String regExchangeClass(Exchange exchange) {
+		giveSvc.regExchangeClass(exchange);
+		return "redirect:/give/search_give_exchange";
+	}
+	
+	
+	/**
+	 * 기부 상세 페이지 
+	 * @param no 게시물 번호 
+	 * @return
+	 */
+	
+	// 기부 상세
+	@RequestMapping("/give/donationDetail&{no}")
+	public String donationDetail(@PathVariable("no") int no, Model model, HttpSession session) {
+		// 로그인 한 사용자일 경우 북마크 정보를 가져와서 보여준다.
+		LoginInfo loginInfo = (LoginInfo)session.getAttribute("loginInfo");
+		if(loginInfo != null ) {
+			model.addAttribute("bookmark", bookmarkSvc.checkbookmark(loginInfo.getId(), no, 1));
+		}
+		Donation donationDetail = giveSvc.donationDetail(no);
+		model.addAttribute("donationDetail", donationDetail);
+		return "give/donationDetail";
+	}
+	
+	// 교환 상세
+	@RequestMapping("/give/exchangeDetail&{no}")
+	public String exchangeDetail(@PathVariable("no") int no, Model model, HttpSession session) {
+		// 로그인 한 사용자일 경우 북마크 정보를 가져와서 보여준다.
+		LoginInfo loginInfo = (LoginInfo)session.getAttribute("loginInfo");
+		if(loginInfo != null ) {
+			model.addAttribute("bookmark", bookmarkSvc.checkbookmark(loginInfo.getId(), no, 2));
+		}
+		Exchange exchangeDetail = giveSvc.exchangeDetail(no);
+		model.addAttribute("exchangeDetail", exchangeDetail);
+		return "give/exchangeDetail";
+	}
+	
+	
+	
+	
+}

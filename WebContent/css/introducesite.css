@@ -1,0 +1,62 @@
+@charset "UTF-8";
+
+.sidemenu {
+	float: left;
+	margin-right: 10px;
+	text-align: center;
+	padding-top: 80px;
+	padding-right: 20px;
+}
+
+.sidemenu ul {
+	list-style-type: none;
+	padding-right: 40px;
+}
+
+.sidemenu ul li {
+	text-align: left;
+	padding-bottom: 10px;
+}
+
+.sidemenu .left_li {
+	padding-left: 10px;
+}
+
+.sidemenu ul li a {
+	text-decoration: none;
+	color: #000;
+}
+
+.introducesite_img {
+	display: block;
+	position: relative;
+	width: 815px;
+	/* padding: 16px 0; */
+	margin: auto;
+}
+
+.howtouseList {
+    width: 800px;
+	margin: auto;
+	padding: 0 20px;
+}
+
+.introducesite {
+	line-height: 200%;
+	color: #3ababb;
+}
+.introducesite_highlight {
+	line-height: 200%;
+	color: #145567;
+}
+.howtouse_highlight {
+	color: #145567;
+}
+.howtouse_warning {
+	color: #d61f1f;
+}
+
+#copy {
+	padding: 10px 10px 30px 10px;
+	line-height: 2em;
+}

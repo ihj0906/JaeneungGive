@@ -8,10 +8,8 @@
 	$(document).ready(function() {	    
 	}); 
 </script>
-<!--
 
-//-->
-</script>
+<section class="top_section"></section>
 
 <div class="note_area">
 	<h4>쪽지 읽기</h4>

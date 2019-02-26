@@ -1,0 +1,25 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ include file="/admin/admin_header.jsp"%>
+
+<article>
+	<h2 class="menu_board">Q&amp;A 관리</h2>
+	<form method="post" name="form">
+		<table class="borad_table">
+			<tr>
+				<th colspan="2" width=10%>[기부/교환] 제목</th>
+			</tr>
+			<tr>
+				<td class="qna_content" colspan="2">내용</td>
+			</tr>
+			<tr>
+				<td>작성자</td>
+				<td>작성일</td>
+			</tr>
+		</table>
+		<br> <input type="button" value="삭제"> <input
+			type="button" value="목록">
+	</form>
+</article>
+
+<%@ include file="/admin/admin_footer.jsp"%>

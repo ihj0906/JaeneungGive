@@ -1,0 +1,208 @@
+package dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+
+import javax.sql.DataSource;
+
+import dto.Donation;
+import dto.Exchange;
+
+public class BookmarkDao {
+	private DataSource dataSource;
+
+	public BookmarkDao(DataSource dataSource) {
+		this.dataSource = dataSource;
+	}
+
+	/**
+	 * 해당 게시물에 북마크된 정보가 있는지 확인
+	 * 
+	 * @param id       로그인한 사용자ID
+	 * @param board_no 게시물번호
+	 * @param board_id 게시판 번호 (1 = 기부 / 2 = 교환)
+	 * @return 북마크가 되어 있으면 1, 없으면 0 리턴
+	 */
+	public int checkBookmark(String id, int board_no, int board_id) {
+		int result = 0;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "select * from bookmark where id = ? and board_no = ? and board_id =?";
+		try {
+			conn = dataSource.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.setInt(2, board_no);
+			pstmt.setInt(3, board_id);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				return result = rs.getRow();
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e) {
+
+			}
+		}
+		return result;
+	}
+
+	/**
+	 * 북마크 된 정보를 삭제한다
+	 * @param id       로그인한 사용자ID
+	 * @param board_no 게시물번호
+	 * @param board_id 게시판 번호 (1 = 기부 / 2 = 교환)
+	 */
+	public void removeBookmark(String id, int board_no, int board_id) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = "delete from bookmark where id = ? and board_no = ? and board_id =?";
+		try {
+			conn = dataSource.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.setInt(2, board_no);
+			pstmt.setInt(3, board_id);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e) {
+
+			}
+		}
+	}
+
+	/**
+	 * 북마크를 추가한다
+	 * @param id       로그인한 사용자ID
+	 * @param board_no 게시물번호
+	 * @param board_id 게시판 번호 (1 = 기부 / 2 = 교환)
+	 */
+	public void addBookmark(String id, int board_no, int board_id) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = "insert into bookmark (id, board_no, board_id) values (?,?,?)";
+		try {
+			conn = dataSource.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.setInt(2, board_no);
+			pstmt.setInt(3, board_id);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e) {
+
+			}
+		}
+	}
+	
+	public ArrayList<Donation> indexDonationList(String id){
+		ArrayList<Donation> list = new ArrayList<Donation>();
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "select * from bookmark_d where book_id is null or book_id = ? order by no desc";
+		try {
+			conn = dataSource.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				Donation donation = new Donation();
+				donation.setNo(rs.getInt("no"));
+				donation.setTalent1(rs.getString("talent1"));
+				donation.setTalent2(rs.getString("talent2"));
+				donation.setPeople(rs.getInt("people"));
+				donation.setId(rs.getString("id"));
+				donation.setSubject(rs.getString("subject"));
+				donation.setContent(rs.getString("content"));
+				donation.setLocation(rs.getString("location"));
+				donation.setClosing_date(rs.getString("closing_date"));
+				donation.setBook_id(rs.getString("book_id"));
+				donation.setBook_no(rs.getInt("book_no"));
+				list.add(donation);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs != null) rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e) {
+
+			}
+		}
+		return list;
+	}
+	
+	public ArrayList<Exchange> indexExchangeList(String id){
+		ArrayList<Exchange> list = new ArrayList<Exchange>();
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "select * from bookmark_e where book_id is null or book_id = ? order by no desc";
+		try {
+			conn = dataSource.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				Exchange exchange = new Exchange();
+				exchange.setNo(rs.getInt("no"));
+				exchange.setGive_talent1(rs.getString("give_talent1"));
+				exchange.setGive_talent2(rs.getString("give_talent2"));
+				exchange.setWish_talent1(rs.getString("wish_talent1"));
+				exchange.setWish_talent2(rs.getString("wish_talent2"));
+				exchange.setId(rs.getString("id"));
+				exchange.setSubject(rs.getString("subject"));
+				exchange.setContent(rs.getString("content"));
+				exchange.setLocation(rs.getString("location"));
+				exchange.setClosing_date(rs.getString("closing_date"));
+				exchange.setBook_id(rs.getString("book_id"));
+				exchange.setBook_no(rs.getInt("book_no"));
+				list.add(exchange);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs != null) rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e) {
+				
+			}
+		}
+		return list;
+	}
+}

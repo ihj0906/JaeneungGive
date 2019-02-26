@@ -4,6 +4,8 @@
 <%@ include file="../header.jsp"%>
 <%@ include file="sidemenu.jsp"%>
 
+<section class="top_section"></section>
+
 <div class="note_area">
 	<h4>받은 쪽지함</h4>
 <%-- 	<a class="note_btn" href="/message/delete&${noteDetail.no}"><span class="bu_del"></span>삭제</a> --%>

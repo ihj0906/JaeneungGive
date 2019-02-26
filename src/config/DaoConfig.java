@@ -9,13 +9,18 @@ import org.springframework.context.annotation.Configuration;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 
+import dao.AdminDao;
+import dao.ApplicantDao;
+import dao.BookmarkDao;
 import dao.GiveDao;
 import dao.MemberDao;
 import dao.MypageDao;
 import dao.NoteDao;
 import dao.QnaDao;
+import service.AdminLoginService;
+import service.ApplicantService;
+import service.BookmarkService;
 import service.GiveService;
-import service.LoginService;
 import service.MemberService;
 import service.MessageService;
 import service.MypageService;
@@ -34,7 +39,9 @@ public class DaoConfig {
 		} catch (PropertyVetoException e) {
 			e.printStackTrace();
 		}
-/*		ds.setJdbcUrl("jdbc:mysql://192.168.0.21:3306/team3");
+
+//		학원 서버 주소
+		/*ds.setJdbcUrl("jdbc:mysql://192.168.0.21:3306/team3");
 		ds.setUser("team3");
 		ds.setPassword("team3");*/
 
@@ -80,7 +87,6 @@ public class DaoConfig {
 		return new QnaService(qnaDao());
 	}
 
-
 	@Bean
 	public GiveDao giveDao() {
 		return new GiveDao(dataSource());
@@ -99,6 +105,36 @@ public class DaoConfig {
 	@Bean
 	public MypageService mypageSvc() {
 		return new MypageService(mypageDao());
+	}
+
+	@Bean
+	public BookmarkDao bookmarkDao() {
+		return new BookmarkDao(dataSource());
+	}
+
+	@Bean
+	public BookmarkService bookmarkSvc() {
+		return new BookmarkService(bookmarkDao());
+	}
+
+	@Bean
+	public ApplicantDao applicantDao() {
+		return new ApplicantDao(dataSource());
+	}
+
+	@Bean
+	public ApplicantService applicantSvc() {
+		return new ApplicantService(applicantDao());
+	}
+
+	@Bean
+	public AdminDao adminDao() {
+		return new AdminDao(dataSource());
+	}
+
+	@Bean
+	public AdminLoginService adminLoginSvc() {
+		return new AdminLoginService(adminDao());
 	}
 
 }

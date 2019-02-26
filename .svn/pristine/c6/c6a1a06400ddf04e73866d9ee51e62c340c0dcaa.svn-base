@@ -1,0 +1,25 @@
+function adminLogin() {
+	/*	var id = $('#id').val();
+	var password = $('#password').val();
+	if (data == 1) {
+		$('#form').submit();
+	} else if (data == 2) {
+		alter("입력된 정보가 일치하지 않습니다.");
+	} else {
+		$('#id').val('');
+		$('#password').val('');
+	}*/
+	$('#form').submit();
+}
+
+function adminFaqDelete(no) {
+	$('#no').val(no);
+	document.form.action="/admin/faqDelete";
+	document.form.submit();
+}
+
+function adminMemberDelete(id) {
+	$('#id').val(id);
+	document.form.action="/admin/memberDelete";
+	document.form.submit();
+}

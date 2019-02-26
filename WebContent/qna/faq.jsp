@@ -1,18 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="../header.jsp" %>
+<%@ include file="/header.jsp" %>
 
-<link href="../css/qna.css" rel="stylesheet" type="text/css" />
+<link href="/css/qna.css" rel="stylesheet" type="text/css" />
 
+<!-- <section class="top_section">
+</section>
+ -->
+	<div style="
+    background-color: #50d2d4;
+"><img class="faq_img" src="/images/faq.jpg" /></div>
 	<nav class="tabmenu">
+		<input type="hidden" id="qnaId" value="${loginInfo.id }">
+	
 		<ul>
-			<li><a href="/qna/qna">문의 내역</a></li>
-			<li><a href="/qna/report">문의 하기</a></li>
+			<li onclick="select_list('1')"><a href="#">문의 내역</a></li>
+			<li onclick="select_list('2')"><a href="#">문의 하기</a></li>
 			<li class="on"><a href="/qna/faq">자주 묻는 질문</a></li>
 		</ul>
 	</nav>
 	<div>
-		<ul>
+		<ul class="faq_table">
 		<c:forEach var="faq" items="${faqList}">
 		<li>
 		<dl>
@@ -80,8 +88,7 @@
 				</dd>
 			</dl>
 		</li> -->
-			
 		</ul>
 	</div>
-			
+	<div class="bottom"></div>
 <%@ include file="../footer.jsp" %>

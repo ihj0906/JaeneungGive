@@ -1,0 +1,33 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ include file="../header.jsp" %>
+<%@ include file="mypagesidemenu.jsp" %>   
+<div class="mygiveList">
+		<h1><span>신청한 글</span></h1>
+		<!-- 내가 신청한 교환 -->
+	<table class="mygiveList_table">
+	<thead>
+	<tr>
+			<td>작성자</td>
+			<td>제목</td>
+			<td>신청일</td>
+			<td>진행 상태</td>
+			<td>삭제</td>
+	</tr>
+	</thead>
+	<c:forEach var="myexchange" items="${myApplyExchangeList}">
+		<tr>
+			<td>${myexchange.id}</td>
+			<td><a href="/give/exchangeDetail&${myexchange.no}">${myexchange.content}</a></td>
+			<td><fmt:formatDate value="${myexchange.app_appli_date}"/></td>
+			<td>${myexchange.app_progress}</td>
+			<td><input type="checkbox" id="clip"></td>
+		</tr>
+	</c:forEach>
+	</table>
+</div>
+
+<div id=member></div>
+
+
+<%@ include file="../footer.jsp"%>

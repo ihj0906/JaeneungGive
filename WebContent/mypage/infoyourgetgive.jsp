@@ -6,6 +6,9 @@
 
 <link href="/css/mypage.css" rel="stylesheet" type="text/css" />
 
+<section class="top_section">
+</section>
+
 <div class="mygiveList">
 		<h1><span>기 부 받 은 내 역</span></h1>
 	<table class="mygiveList_table">
@@ -20,14 +23,14 @@
 			<td>스크랩</td>
 		</tr>
 	</thead>
-	<c:forEach var="mydonation" items="${myDonationList}">
+	<c:forEach var="infoyourgetgive" items="${infoYourgetGive}">
 		<tr>
-			<td>${mydonation.talent1}&ensp;/&ensp;${mydonation.talent2}</td>
-			<td>0&ensp;/&ensp;${mydonation.people}</td>
-			<td><a href="#">${mydonation.subject}</a></td>
-			<td><a href="#">${mydonation.content}</a></td>
-			<td>${mydonation.location}</td>
-			<td>${mydonation.closing_date}&ensp;</td>
+			<td>${infoyourgetgive.talent1}&ensp;/&ensp;${infoyourgetgive.talent2}</td>
+			<td>0&ensp;/&ensp;${infoyourgetgive.people}</td>
+			<td><a href="#">${infoyourgetgive.subject}</a></td>
+			<td><a href="#">${infoyourgetgive.content}</a></td>
+			<td>${infoyourgetgive.location}</td>
+			<td>${infoyourgetgive.closing_date}&ensp;</td>
 			<td><input type="checkbox" id="clip"></td>
 		</tr>
 	</c:forEach>

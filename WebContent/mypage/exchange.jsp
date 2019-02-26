@@ -2,7 +2,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp" %>
-<%@ include file="mypagesidemenu.jsp" %>   
+<%@ include file="mypagesidemenu.jsp" %> 
+
+<section class="top_section">
+</section>
+  
 <div class="mygiveList">
 		<h1><span>교 환</span></h1>
 	<table class="mygiveList_table">

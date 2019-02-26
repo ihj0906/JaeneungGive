@@ -9,7 +9,11 @@ function go_search() {
 	} else if (val == "선택") {
 		alert("카테고리를 선택해 주세요.");
 		document.frm.category.focus();
+	} else if (val == "기부"){
+		document.frm.action = "/give/search_give_donation";
+		document.frm.submit();
 	} else {
+		document.frm.action = "/give/search_give_exchange";
 		document.frm.submit();
 	}
 }
@@ -30,6 +34,7 @@ function menu_list(searchType) {
 		}
 		document.frmm.submit();
 	} else {
+		$("#headerForm").attr("action", "/give/search_give_exchange");
 		document.frmm.category.value = "교환";
 		if (searchType == 8) {
 			document.frmm.key.value = "언어";
@@ -48,4 +53,12 @@ function menu_list(searchType) {
 
 function alarm() {
 	location.href="/message/inbox";
+}
+
+function go_d_detail(no){
+	location.href="/give/donationDetail&"+no;
+}
+
+function go_e_detail(no){
+	location.href="/give/exchangeDetail&"+no;
 }

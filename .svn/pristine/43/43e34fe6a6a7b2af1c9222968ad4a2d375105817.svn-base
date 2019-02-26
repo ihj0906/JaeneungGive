@@ -1,0 +1,144 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ include file="header.jsp"%>
+
+<!-- 검색 기능 -->
+<script type="text/javascript" src="/js/index.js"></script>
+
+<!-- 메인 시작 -->
+<article>
+	<div class="search_wrap">
+		<!-- 검색창 시작 -->
+		<div class="main_search">
+			<form method="post" name="frm">
+				<div class="main_search_container">
+					<select id="search_category" name="category">
+						<option value="선택">선택</option>
+						<option value="기부">기부</option>
+						<option value="교환">교환</option>
+					</select> <input type="text" name="key" placeholder="검색어를 입력해주세요" /> <input
+						type="button" onclick="go_search()" value="검색" />
+				</div>
+			</form>
+		</div>
+	</div>
+	<!-- 검색창 끝 -->
+
+
+	<!-- 재능기부 최근목록 시작 -->
+	<div class="main_wrap">
+	<section class="donation_main">
+
+		<h2 class="give_font">최근 재능기부 목록</h2>
+		<div class="donation">
+			<c:forEach var="donation" items="${donationList}" begin="0" end="3"
+				step="1">
+				<!-- <a href="#"> -->
+					<div class="donation_list">
+						<div>
+							<div class="donation_talent">${donation.talent2}</div>
+							<div class="donation_full">${donation.people}</div>
+						</div>
+						<div>
+								<!-- 북마크 시작-->
+							<div class="donation_bookmark">
+								<c:choose>
+									<c:when test="${empty loginInfo}">
+										<input type="image" class="bookmarkImage" id="${donation.no}" src="/images/unbookmark.png" onclick="bookmark('1','${donation.no}')">
+									</c:when>
+									<c:when test="${donation.book_id == loginInfo.id}">
+										<input type="image" class="bookmarkImage"  id="${donation.no}" src="/images/bookmark.png" onclick="bookmark('1','${donation.no}')">
+									</c:when>
+									<c:otherwise>
+										<input type="image" class="bookmarkImage"  id="${donation.no}" src="/images/unbookmark.png" onclick="bookmark('1','${donation.no}')">
+									</c:otherwise>
+								</c:choose>
+
+
+<%-- 
+								<c:if test="${donation.book_id != loginInfo.id}">
+									<input type="image" src="/images/unbookmark.png"
+										onclick="bookmark('1','${donation.no}')">
+								</c:if>
+								<c:if
+									test="${donation.book_id == loginInfo.id && !empty loginInfo}">
+									<input type="image" id="image" src="/images/bookmark.png"
+										onclick="bookmark('1','${donation.no}')">
+								</c:if> --%>
+							</div>
+								<!-- 북마크 종료 -->
+			
+							<div class="donation_subject">${donation.subject}</div>
+						</div>
+						<div>
+							<div class="donation_content">${donation.content}</div>
+						</div>
+						<div>
+							<div class="donation_user">${donation.id}</div>
+							<div class="donation_dday">${donation.closing_date}</div>
+							<div class="donation_position">${donation.location}</div>
+						</div>
+					</div>
+				</a>
+
+			</c:forEach>
+		</div>
+	</section>
+	<section class="donation_main">
+
+		<h2 class="give_font">최근 재능교환 목록</h2>
+		<div class="donation">
+			<c:forEach var="exchange" items="${exchangeList}" begin="0" end="3" step="1">
+				<!-- <a href="#"> -->
+				<div class="donation_list">
+						<div>
+							<div class="donation_talent">${exchange.give_talent2}</div>
+							<div class="donation_full">${exchange.wish_talent2}</div>
+						</div>
+						<div>
+								<!-- 북마크 시작-->
+								<div class="donation_bookmark">
+								<c:choose>
+									<c:when test="${empty loginInfo}">
+										<input type="image" class="bookmarkImage" id="${exchange.no}" src="/images/unbookmark.png" onclick="bookmark('2','${exchange.no}')">
+									</c:when>
+									<c:when test="${exchange.book_id == loginInfo.id}">
+										<input type="image" class="bookmarkImage" id="${exchange.no}" src="/images/bookmark.png" onclick="bookmark('2','${exchange.no}')">
+									</c:when>
+									<c:otherwise>
+										<input type="image" class="bookmarkImage" id="${exchange.no}" src="/images/unbookmark.png" onclick="bookmark('2','${exchange.no}')">
+									</c:otherwise>
+								</c:choose>
+							<%-- <c:if test="${exchange.book_id != loginInfo.id}">
+									<input type="image" src="/images/unbookmark.png"
+										onclick="bookmark('2','${exchange.no}')">
+							</c:if>
+							<c:if test="${exchange.book_id == loginInfo.id}">
+								<input type="image" id="image" src="/images/bookmark.png"
+									onclick="bookmark('2','${exchange.no}')">
+							</c:if> --%>
+								</div>
+								<!-- 북마크 종료 -->
+							<div class="donation_subject">${exchange.subject}</div>
+						</div>
+						<div>
+							<div class="donation_content">${exchange.content}</div>
+						</div>
+						<div>
+							<div class="donation_user">${exchange.id}</div>
+							<div class="donation_dday">${exchange.closing_date}</div>
+							<div class="donation_position">${exchange.location}</div>
+						</div>
+					</div>
+			</c:forEach>
+		</div>
+	</section>
+	</div>
+	<!-- 재능기부 최근목록 끝 -->
+
+	<div class="clear"></div>
+
+</article>
+<!-- 메인 끝 -->
+
+<%@ include file="footer.jsp"%>

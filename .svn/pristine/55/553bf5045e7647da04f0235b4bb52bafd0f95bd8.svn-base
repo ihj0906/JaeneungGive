@@ -1,0 +1,207 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ include file="../header.jsp"%>
+
+<link href="/css/give.css" rel="stylesheet" type="text/css" />
+
+<!-- 메인 시작 -->
+<article>
+	<form method="post">
+		<div class="search">
+			<div class="search_container">
+				<input type="text" placeholder="검색어를 입력해주세요" /> <input
+					type="button" value="검색" />
+			</div>
+		</div>
+
+		<div class="giveMenu">
+			<ul>
+				<li><a href="javascript:void(0);" onclick="menu_list('8')">언어</a></li>
+				<li><a href="javascript:void(0);" onclick="menu_list('9')">예술</a></li>
+				<li><a href="javascript:void(0);" onclick="menu_list('10')">스포츠</a></li>
+				<li><a href="javascript:void(0);" onclick="menu_list('11')">컴퓨터</a></li>
+				<li><a href="javascript:void(0);" onclick="menu_list('12')">그외</a></li>
+			</ul>
+		</div>
+
+		<div class="giveDetail_container">
+			<input type="hidden" id="board" value="exchange"> <input
+				type="hidden" id="login_id" value="${loginInfo.id}"> <input
+				type="hidden" id="no" value="${exchangeDetail.no}">
+			<!-- 북마크 시작-->
+			<c:choose>
+				<c:when test="${empty loginInfo}">
+					<input type="image" class="bookmarkImage" id="${exchangeDetail.no}"
+						src="/images/unbookmark.png"
+						onclick="bookmark('2','${exchangeDetail.no}')">
+				</c:when>
+				<c:when test="${exchangeDetail.book_id == loginInfo.id}">
+					<input type="image" class="bookmarkImage" id="${exchangeDetail.no}"
+						src="/images/bookmark.png"
+						onclick="bookmark('2','${exchangeDetail.no}')">
+				</c:when>
+				<c:otherwise>
+					<input type="image" class="bookmarkImage" id="${exchangeDetail.no}"
+						src="/images/unbookmark.png"
+						onclick="bookmark('2','${exchangeDetail.no}')">
+				</c:otherwise>
+			</c:choose>
+			<!-- 북마크 종료  -->
+			<table class="giveDetail_table" width="50%">
+				<tr>
+					<th>기부 재능</th>
+					<td>${exchangeDetail.give_talent1}&ensp;/&ensp;${exchangeDetail.give_talent2}</td>
+					<th>희망 재능</th>
+					<td>${exchangeDetail.wish_talent1}&ensp;/&ensp;${exchangeDetail.wish_talent2}</td>
+				</tr>
+				<tr>
+					<th>작성자</th>
+					<td colspan=3><a href="/message/write&${exchangeDetail.id}">${exchangeDetail.id}</a></td>
+				</tr>
+				<tr>
+					<th>제목</th>
+					<td colspan=3>${exchangeDetail.subject}</td>
+				</tr>
+				<tr>
+					<th>내용</th>
+					<td colspan=3>${exchangeDetail.content}</textarea></td>
+				</tr>
+				<tr>
+					<th>위치</th>
+					<td>${exchangeDetail.location}</td>
+					<th>마감일</th>
+					<td>${exchangeDetail.closing_date}&ensp;<span id=dday>D-6</span></td>
+				</tr>
+			</table>
+			<input type="submit" id="apply" value="신청하기">
+			<c:if test="${exchangeDetail.id == loginInfo.id}">
+				<input type="button" id="modify" value="수정"
+					onclick="modClassWriteForm('${exchangeDetail.no}')">
+				<input type="button" id="delete" value="삭제"
+					onclick="delClass('${exchangeDetail.no}')">
+			</c:if>
+			<input type="button" id="back" value="목록" onclick="go_back()">
+		</div>
+		
+		<table class="giveDetail_table" width="50%">
+			<tr>
+				<th>기부 재능</th>
+				<td>${exchangeDetail.give_talent1}&ensp;/&ensp;${exchangeDetail.give_talent2}</td>
+				<th>희망 재능</th>
+				<td>${exchangeDetail.wish_talent1}&ensp;/&ensp;${exchangeDetail.wish_talent2}</td>
+			</tr>
+			<tr>
+				<th>작성자</th>
+				<td colspan=3><a href="/message/write&${exchangeDetail.id}">${exchangeDetail.id}</a></td>
+			</tr>
+			<%-- 		
+	<tr>
+				<th>작성자</th>
+			<c:when test="${applicant.progress == 2}">
+				<td colspan=3>${exchangeDetail.id}<input type="button" id="messageBtn" value="쪽지보내기" onclick="test()"></td>
+				</c:when>
+				<c:otherwise>
+				<td colspan=3>${exchangeDetail.id}</td>
+				</c:otherwise>
+			</tr> --%>
+			<tr>
+				<th>제목</th>
+				<td colspan=3>${exchangeDetail.subject}</td>
+			</tr>
+			<tr>
+				<th>내용</th>
+				<td colspan=3>${exchangeDetail.content}</textarea></td>
+			</tr>
+			<tr>
+				<th>위치</th>
+				<td>${exchangeDetail.location}</td>
+				<th>마감일</th>
+				<td>${exchangeDetail.closing_date}&ensp;<span id=dday>D-6</span></td>
+			</tr>
+			<!--
+		<tr> 
+			<th>스크랩</th><td colspan=3><input type="checkbox" id="clip"></td>
+		</tr> -->
+		</table>
+		</form>
+		<br>
+		<!-- 신청자 목록 -->
+		<c:if test="${!empty loginInfo}">
+			<form id="appli_form" method="post">
+				<input type="hidden" name="url"
+					value="/give/exchangeDetail&${exchangeDetail.no}"> <input
+					type="hidden" name="id" value="${loginInfo.id}"> <input
+					type="hidden" name="board_no" value="${exchangeDetail.no}">
+				<input type="hidden" name="board_id" value="2">
+				<input type="hidden" name="appli_confirmId" id="appli_confirmId">
+				<table class="giveDetail_table" width="50%">
+					<tr>
+						<th>NO</th>
+						<th>ID</th>
+						<th>내용</th>
+						<th>교환</th>
+					</tr>
+					
+					<c:choose>
+						<c:when test="${exchangeDetail.id == loginInfo.id}">
+							<c:forEach var="list" items="${listOfApplicant}">
+								<tr>
+									<td>${list.no}</td>
+									<td>${list.id}</td>
+									<td>${list.content}</td>
+									<c:if test="${list.progress == 1}">
+									<td><input type=button id="joinConfirmBtn" value="교환"
+										onclick="joinSubmit('${list.id}')"></td>
+									</c:if>
+									<c:if test="${list.progress == 2}">
+									<td>교환완료</td>
+									</c:if>
+									<c:if test="${list.progress == 3}">
+									<td>교환거절</td>
+									</c:if>
+								</tr>
+							</c:forEach>
+						</c:when>
+
+						<c:when test="${applicant.id == loginInfo.id}">
+							<tr>
+								<td></td>
+								<td>${applicant.id}</td>
+								<td>${applicant.content}</td>
+								<c:choose>
+									<c:when test="${applicant.progress == 1}">
+										<td>진행중 <input type=button value="삭제"
+											onclick="applicant_del()"></td>
+									</c:when>
+									<c:when test="${applicant.progress == 2}">
+										<td>교환성공</td>
+									</c:when>
+									<c:otherwise>
+										<td>교환실패</td>
+									</c:otherwise>
+								</c:choose>
+							</tr>
+						</c:when>
+						<c:otherwise>
+							<tr>
+								<td></td>
+								<td>${loginInfo.id}</td>
+								<td><textarea maxlength="200" name="content"></textarea></td>
+								<td><input type="button" id="appli_btn" value="신청하기"
+									onclick="applicant()"></td>
+							</tr>
+
+						</c:otherwise>
+					</c:choose>
+				</table>
+			</form>
+		</c:if>
+		<!-- 신청자 목록 종료  -->
+	</div>
+	<input type="button" id="back" value="목록" onclick="go_back()">
+
+	<div class="clear"></div>
+</article>
+<!-- 메인 끝 -->
+
+<%@ include file="../footer.jsp"%>

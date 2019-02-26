@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp" %>
 
+<section class="top_section"></section>
+
 <article>
 
 	<div id="pagetitle">

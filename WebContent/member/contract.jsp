@@ -4,10 +4,7 @@
 <!-- https://www.codingfactory.net/10682 -->
 <link href="/css/member.css" rel="stylesheet" type="text/css" />
 
-
-<script>
-
-</script>
+<section class="top_section"></section>
 
 <article>
 	<div id="pagetitle">
@@ -16,8 +13,7 @@
 		</h1>
 	</div>
 	<form id="join" action="signup" method="post" name="join">
-	<input type="checkbox" name="agree-all" class="agree-all" onclick="checkedall()"> 이용약관 및 개인정보수집 및 이용, 쇼핑정보
-		수신(선택)에 모두 동의합니다. <br> <br> 이용약관 동의 <br>
+	<input type="checkbox" name="agree-all" class="agree-all" onclick="checkedall()"> 이용약관 및 개인정보수집 및 이용에 모두 동의합니다. <br> <br> 이용약관 동의 <br>
 		<textarea rows="10" cols="100">
 제3조 (약관 등의 명시와 설명 및 개정) 
 
@@ -62,10 +58,11 @@
   (동의를 받은 사항이 변경되는 경우에도 같습니다.) 
   다만, 서비스제공에 관한 계약이행을 위해 필요하고 구매자의 편의증진과 관련된 경우에는 「정보통신망 이용촉진 및 정보보호 등에 관한 법률」에서 정하고 있는 방법으로 개인정보 취급방침을 통해 알림으로써 고지절차와 동의절차를 거치지 않아도 됩니다.
          </textarea>
-		<br> <input type="checkbox" name="agree" class="agree" id="agree2" onclick="unchecked()"> 동의함 &nbsp;
-		&nbsp; <br> <br> <br> <br> <input type="button"
-			value="취소" class="submit" onclick="go_next()">
-			<input type="button" value="다음" class="submit" onclick="terms()">
+		<br> 
+		<input type="checkbox" name="agree" class="agree" id="agree2" onclick="unchecked()"> 동의함 &nbsp; <br> <br>  
+		<input class="boardDetail_delete_btn" type="button" value="취소" class="submit" onclick="cancelJoin()">
+		<input class="board_list_btn" type="button" value="다음" class="submit" onclick="terms()">
 	</form>
+	<br> <br>
 </article>
 <%@ include file="../footer.jsp"%>

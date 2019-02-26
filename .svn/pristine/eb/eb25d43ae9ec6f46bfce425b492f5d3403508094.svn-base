@@ -1,0 +1,51 @@
+package controller;
+
+import java.util.ArrayList;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import dto.Applicant;
+import service.ApplicantService;
+
+@Controller
+@RequestMapping("/applicant")
+public class ApplicantController {
+
+	@Autowired
+	private ApplicantService applicantSvc;
+	
+	@RequestMapping(value="/add")
+	public String addApplicant(@RequestParam("url") String url, Applicant applicant) {
+		applicantSvc.addApplicant(applicant);
+		return "redirect:"+url;
+	}
+	
+	@RequestMapping(value="/del")
+	public String delApplicant(@RequestParam("url") String url, @RequestParam("board_no") int board_no, @RequestParam("board_id") int board_id, @RequestParam("id") String id) {
+		applicantSvc.delApplicant(board_no, board_id, id);
+		return "redirect:"+url;
+	}
+	
+	
+	// 진행상태 (1 진행중 2 완료(승인) 3 거절)
+	@RequestMapping(value="/submit")
+	public String submitApplicant(@RequestParam("url") String url, @RequestParam("board_no") int board_no, @RequestParam("board_id") int board_id, @RequestParam("appli_confirmId") String id) {
+		ArrayList<Applicant> listOfApplicant = applicantSvc.listOfApplicant(board_no, board_id);
+		int progress = 1;
+		for(int i = 0 ; i < listOfApplicant.size() ; i++) {
+			Applicant applicant = listOfApplicant.get(i);
+			if(applicant.getId().equals(id)){
+				progress = 2;
+				applicantSvc.confirmApplicant(applicant, progress);
+			}else {
+				progress = 3;
+				applicantSvc.confirmApplicant(applicant, progress);
+			}
+		}
+		return "redirect:"+url;
+	}
+	
+}

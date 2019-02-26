@@ -18,10 +18,10 @@ function unchecked() {
  * 약관 동의 체크
  */
 function terms() {
-	if (!$('#agree1').is(":checked") && !$('#agree2').is(":checked")) {
-		alert("이용약관에 동의해주시기 바랍니다.");
+	if (!$('.agree-all').is(":checked") && !$('#agree1').is(":checked")) {
+		alert("이용약관에 동의해주시기 바랍니다. ");
 		$('#agree1').focus();
-	} else if (!$('#agree2').is(":checked")) {
+	} else if (!$('.agree-all').is(":checked") && !$('#agree2').is(":checked")) {
 		alert("개인정보수집 및 이용에 동의해주시기 바랍니다. ");
 		$('#agree2').focus();
 	} else {
@@ -30,61 +30,78 @@ function terms() {
 }
 
 function join() {
-	var doc = document.formm;
-	if (!doc.id.value) {
-		alert("아이디를 입력하여 주세요.");
-		doc.id.focus();
-	} else if (doc.checkid.value != doc.id.value) {
-		alert("아이디 중복확인을 해주세요.");
-		doc.checkidbtn.focus();
-	} else if (!doc.password.value) {
-		alert("비밀번호를 입력해 주세요.");
-		doc.password.focus();
-	} else if (!doc.confirmPassword.value) {
-		alert("비밀번호확인을 입력해 주세요.");
-		doc.confirmPassword.focus();
-	} else if (doc.password.value != doc.confirmPassword.value) {
-		alert("비밀번호가 일치하지 않습니다. 비밀번호를 다시 확인해주세요.");
-		doc.confirmPassword.focus();
-	} else if (!doc.name.value) {
-		alert("이름을 입력해 주세요.");
-		doc.name.focus();
-	} else if (!doc.phone.value) {
-		alert("휴대전화를 입력해 주세요.");
-		doc.phone.focus();
-	} else if (!doc.email.value) {
-		alert("이메일을 입력해 주세요.");
-		doc.email.focus();
+	$(".msg").text("");
+	$(".msg").attr("style", "color:#f00");
+	if (!$("#id").val()) {
+		$(".idCheckResult .msg").text("아이디를 입력해주세요.");
+		$('#id').focus();
+	} else if (!$('#checkid').val()) {
+		$(".idCheckResult .msg").text("아이디 중복확인을 해주세요.");
+		$('.board_submit_btn').focus();
+	} else if (!$('#password').val()) {
+		$("#msgPassword").text("비밀번호를 입력해주세요.");
+		$('#password').focus();
+	} else if (!$('#confirmPassword').val()) {
+		$("#msgConfirmPassword").text("비밀번호확인을 입력해주세요.");
+		$('#confirmPassword').focus();
+	} else if ($('#password').val() != $('#confirmPassword').val()) {
+		$("#msgConfirmPassword").text("비밀번호가 일치하지 않습니다. 다시 확인해주세요");
+		$('#confirmPassword').val('');
+		$('#confirmPassword').focus();
+	} else if (!$('#name').val()) {
+		$("#msgName").text("이름을 입력해주세요.");
+		$('#name').focus();
+	} else if (!$('#phone').val()) {
+		$("#msgPhone").text("휴대전화를 입력해주세요.");
+		$('#phone').focus();
+	} else if ($('#phone').val().indexOf('-') > -1) {
+		$("#msgPhone").text("하이픈 ('-')을 제외하고 입력해주세요.");
+		$('#phone').focus();
+	} else if (!$('#email').val()) {
+		$("#msgEmail").text("이메일을 입력해주세요.");
+		$('#email').focus();
 	} else {
-		doc.submit();
+		$('form').submit();
 	}
+
 }
 
-function noSpacebar() {
-	$('input[type=text]').keydown(function(e) {
-		if (e.keyCode == 32) {
-			// $(this).val();
-			return false;
-		}
-	});
-}
 /*
- * 0 48 9 57 A 65 Z 90 a 97 z 122
+ * function noSpacebar() { $('input[type=text]').keydown(function(e) { if
+ * (e.keyCode == 32) { return false; } }); }
  * 
+ * function noSpacebar() { $('input[type=password]').keydown(function(e) { if
+ * (e.keyCode == 32) { return false; } }); }
  */
-
-function engNumOnly() {
-	$('input[type=text]').keydown(
-			function(e) {
-				if (e.keyCode == 32 || e.keyCode != 122 && e.keyCode != 8
-						&& !(e.keyCode >= 48 && e.keyCode <= 57)
-						&& !(e.keyCode >= 65 && e.keyCode <= 90)) {
-					return false;
-				} else if (e.key == '!') {
-					return false;
-				}
-			});
-}
+/*
+ * PHONE function numOnly() { $(document).ready(function() {
+ * $('#phone').keyup(function() { if (this.value !=
+ * this.value.replace(/[^0-9]/g, '')) { this.value =
+ * this.value.replace(/[^0-9]/g, ''); } }); }); }
+ * 
+ * ID function lowerEngNumOnly() { $('#id').keyup(function() { if (this.value !=
+ * this.value.replace(/[^a-zA-Z0-9]/g, '')) { this.value =
+ * this.value.replace(/[^a-zA-Z0-9]/g, '').toLowerCase(); }
+ * 
+ * }); }
+ * 
+ * PASSWORD function engNumOnly() { $('#password').keyup(function() { if
+ * (this.value != this.value.replace(/[^a-zA-Z0-9]/g, '')) { this.value =
+ * this.value.replace(/[^a-zA-Z0-9]/g, ''); } }); }
+ * 
+ * NAME function forName() { $('#name').keyup(function() { if (this.value =
+ * this.value.replace(/[^ㄱ-힣a-zA-Z]/g, '')) { this.value =
+ * this.value.replace(/[^가-힣a-zA-Z]/g, ''); } }); }
+ * 
+ * MAIL function forMail() { $('#email').keyup(function() { this.value =
+ * this.value.replace(/[^0-9a-zA-Z@.]/g, ''); }); }
+ */
+/*
+ * function engNumOnly() { $('input[type=text]').keydown( function(e) { if
+ * (e.keyCode == 32 || e.keyCode != 122 && e.keyCode != 8 && !(e.keyCode >= 48 &&
+ * e.keyCode <= 57) && !(e.keyCode >= 65 && e.keyCode <= 90)) { return false; }
+ * else if (e.key == '!') { return false; } }); }
+ */
 
 function go_mypage() {
 	$("#signUpForm").attr("action", "/mypage/memberinfo").submit();
@@ -274,6 +291,45 @@ function deleteUser() {
 				}
 			}
 		}); // ajax 끝
-
 	}
+}
+
+function idCheck() {
+	$(document).ready(
+			function() {
+				var query = $('#id').val(); //
+				if (!query) {
+					$(".idCheckResult .msg").text("아이디를 입력해주세요");
+					$(".idCheckResult .msg").attr("style", "color:#f00");
+					$('#id').focus();
+				} else {
+					$.ajax({
+						url : "/join/idCheck",
+						type : "post",
+						data : {
+							"id" : query
+						},
+						success : function(data) {
+							if (data == 1) {
+								$(".idCheckResult .msg").text(
+										query + "는 이미 사용중인 아이디 입니다.");
+								$(".idCheckResult .msg").attr("style",
+										"color:#f00");
+								$('#id').val('');
+								$('#id').focus();
+							} else {
+								$(".idCheckResult .msg").text(
+										query + "는 사용 가능한 아이디입니다.");
+								$(".idCheckResult .msg").attr("style",
+										"color:#00f");
+								$('#checkid').val(query);
+							}
+						}
+					}); // ajax 끝
+				}
+			});
+}
+
+function cancelJoin() {
+	location.href = "/index";
 }

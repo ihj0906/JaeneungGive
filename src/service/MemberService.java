@@ -1,7 +1,8 @@
 package service;
 
-import dao.MemberDao;
+import java.util.ArrayList;
 
+import dao.MemberDao;
 import dto.JoinRequest;
 import dto.LoginInfo;
 import dto.Member;
@@ -67,4 +68,15 @@ public class MemberService {
 	public void deleteUser(String id) {
 		memberDao.deleteUser(id);
 	}
+	
+	public void updateUser(String id) {
+		memberDao.updateUser(id);
+	}
+	
+//	admin member list 출력
+	public ArrayList<Member> adminMemberList() {
+		ArrayList<Member> adminMemberList = memberDao.adminMemberList();
+		return adminMemberList;
+	}
+	
 }

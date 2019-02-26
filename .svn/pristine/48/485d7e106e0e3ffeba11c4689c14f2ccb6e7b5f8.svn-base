@@ -1,0 +1,23 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ include file="../header.jsp" %>
+<%@ include file="intruducesitesidemenu.jsp" %>  
+<div class="mygiveList">
+		<h1><span>재능 기부란?</span></h1>
+	<div class="clear"></div>
+	<div id="copy">
+		재능 기부란 본래 자원봉사의 행위 중 하나 이며 어떤 전문적인 재능이나<br> 
+		능력을 가진 사람이 기부의 목적으로 자원봉사를 하는 것을 말합니다.<br>
+		하지만 저희 "재능기부"는 전문적인 재능이나 능력이 필요하지 않습니다.<br>
+		만약 특별한 능력이 없다면 한국어도 좋습니다. <br>
+		하지만 저희 "재능기부"는 전문적인 재능이나 능력이 필요하지 않습니다.<br>
+		당신이 할줄 아는 것이 있드면 무엇이든 환영입니다.<br>
+		지금 바로 시작하세요!.<br>
+	</div>
+	
+</div>
+
+<div id=member></div>
+
+
+<%@ include file="../footer.jsp"%>

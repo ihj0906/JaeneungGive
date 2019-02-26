@@ -1,87 +1,123 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ include file="../header.jsp" %>
+	pageEncoding="UTF-8"%>
+<%@ include file="../header.jsp"%>
 
 <link href="/css/give.css" rel="stylesheet" type="text/css" />
 
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />  
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
-<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>  
+<link rel="stylesheet"
+	href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css"
+	type="text/css" />
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+<style>
+.ui-datepicker-trigger {
+	width: 26px;
+	padding-left: 5px;
+	position: fixed;
+}
+</style>
+<script>
+	$(function() {
+		$("#closing_date").datepicker(
+				{
+					showOn : "button",
+					buttonImage : "/images/calendar.jpg",
+					buttonImageOnly : true,
+					showMonthAfterYear : true,
+					dateFormat : "yy-mm-dd",
+					monthNames : [ '1월', '2월', '3월', '4월', '5월', '6월', '7월',
+							'8월', '9월', '10월', '11월', '12월' ],
+					dayNamesMin : [ '일', '월', '화', '수', '목', '금', '토' ],
+					firstDay : 1,
+					minDate : 1,
+				});
+	});
+</script>
 
 <!-- 메인 시작 -->
+<section class="top_section"></section>
+
 <article>
-	<form action="/regDonationClass" method="post">
-	<div class="search">
-		<div class="search_container">
-			<input type="text" placeholder="검색어를 입력해주세요"  />
-			<input type="button" value="검색" />
+	<form name="form" id="modiform" method="post">
+
+		<div class="giveMenu">
+			<ul>
+				<li><a href="javascript:void(0);" onclick="menu_list('2')">언어</a></li>
+				<li><a href="javascript:void(0);" onclick="menu_list('3')">예술</a></li>
+				<li><a href="javascript:void(0);" onclick="menu_list('4')">스포츠</a></li>
+				<li><a href="javascript:void(0);" onclick="menu_list('5')">컴퓨터</a></li>
+				<li><a href="javascript:void(0);" onclick="menu_list('6')">그외</a></li>
+			</ul>
 		</div>
-	</div>
-	
-	<div class="giveMenu">
-		<ul>
-			<li><a href="javascript:void(0);" onclick="menu_list('2')">언어</a></li>
-			<li><a href="javascript:void(0);" onclick="menu_list('3')">예술</a></li>
-			<li><a href="javascript:void(0);" onclick="menu_list('4')">스포츠</a></li>
-			<li><a href="javascript:void(0);" onclick="menu_list('5')">컴퓨터</a></li>
-			<li><a href="javascript:void(0);" onclick="menu_list('6')">그외</a></li>
-		</ul>
-	</div>
-	
-	<div class="giveWrite">
-	<div class="giveWrite_container">
-		<table class="giveWrite_table" width="50%">
-		<%-- <tr><th>작성자</th><td colspan=3>${loginInfo.id}</td></tr> --%>
-		<input type=hidden name="id" value="${loginInfo.id}">
-		<tr>
-			<th>기부 재능</th>
-			<td>
-				<select id="talent1" name="talent1">
-					<option value="">선택</option>
-					<option value="언어">언어</option>
-					<option value="예술">예술</option>
-					<option value="스포츠">스포츠</option>
-					<option value="컴퓨터">컴퓨터</option>
-					<option value="그 외">그 외</option>
-				</select>
-				<input type="text" id="talent2" name="talent2" size="10" maxlength="10">
-			</td>
-			<th>모집인원</th>
-			<td>
-				<input type="text" id="people" name="people" size="3" maxlength="2">&nbsp;명
-			</td>
-		</tr>
-		<tr>
-			<th>제목</th>
-			<td colspan=3><input type="text" id="subject" name="subject" maxlength="20" onKeyUp="count()">&nbsp;
-			<span id="count">0</span>/<span id="max-count">20</span></td>
-		</tr>
-		<tr>
-			<th>내용</th>
-			<td colspan=3><textarea id="content" name="content" rows="10" placeholder="(200자 이내)"></textarea><br>
-			&nbsp;<span id="count">0</span>/<span id="max-count">200</span></td>
-		</tr>
-		<tr>
-			<th>위치</th>
-			<td>
-				<input type="text" id="location" name="location" size="10">
-				<input type="button" id="location_search" value="찾기">
-			</td>
-			<th>마감일</th>
-			<td>
-				<input type="text" id="closing_date" name="closing_date" size="10">
-				<input type="button" id="datepicker" value="날짜 선택">
-			</td>
-		</tr>
-		</table>
-		<input type="submit" id="giveReg_ok" value="등록">
-		<input type="button" id="giveReg_calcel" value="취소" onclick="go_back()">
-	</div>
-	</div>
-	
-	<div class="clear"></div>
+
+		<div class="giveWrite">
+			<div class="giveWrite_container">
+				<input type="hidden" id="board" value="donation"> <input
+					type="hidden" name="id" value="${loginInfo.id}"> <input
+					type="hidden" name="category"> <input type="hidden"
+					name="key"> <input type="hidden" id="no" name="no"
+					value="${modDonation.no }">
+				<table class="giveWrite_table" width="50%">
+					<tr>
+						<th>기부 재능</th>
+						<td><select id="talent1" name="talent1">
+								<option value="">선택</option>
+								<option value="언어"
+									<c:if test="${modDonation.talent1 eq '언어'}">selected</c:if>>언어</option>
+								<option value="예술"
+									<c:if test="${modDonation.talent1 eq '예술'}">selected</c:if>>예술</option>
+								<option value="스포츠"
+									<c:if test="${modDonation.talent1 eq '스포츠'}">selected</c:if>>스포츠</option>
+								<option value="컴퓨터"
+									<c:if test="${modDonation.talent1 eq '컴퓨터'}">selected</c:if>>컴퓨터</option>
+								<option value="그외"
+									<c:if test="${modDonation.talent1 eq '그외'}">selected</c:if>>그외</option>
+						</select> <input type="text" id="talent2" name="talent2" size="10"
+							maxlength="10" value="${modDonation.talent2}"></td>
+						<th>모집인원</th>
+						<td><input type="text" id="people" name="people" size="3"
+							maxlength="2" value="${modDonation.people}" onclick="numOnly()">&nbsp;명</td>
+					</tr>
+					<tr>
+						<th>제목</th>
+						<td colspan=3><input type="text" id="subject" name="subject"
+							onclick="countBoardSubtext()" value="${modDonation.subject}">
+							&nbsp;<span id="count_sub">(0 / 100)</span></td>
+					</tr>
+					<tr>
+						<th>내용</th>
+						<td colspan=3><textarea id="content" name="content" rows="10"
+								onclick="countBoardtext()">${modDonation.content}</textarea>
+							&nbsp;<span id="count_con">(0 / 5000)</span></td>
+					</tr>
+					<tr>
+						<th>위치</th>
+						<td><input type="text" id="location" name="location"
+							size="20" value="${modDonation.location}"> 
+							<input class="board_submit_btn" type="button" id="lo_search_button" value="찾기"
+							onclick="popup()"> </td>
+						<th>마감일</th>
+						<td><input type="text" id="closing_date" name="closing_date"
+							size="10" value="${modDonation.closing_date}" readonly="readonly">
+						</td>
+					</tr>
+				</table>
+				<c:if test="${empty modDonation}">
+					<input class="board_list_btn" type="button" id="giveReg_ok" value="등록"
+						onclick="regClass()">
+				</c:if>
+				<c:if test="${!empty modDonation}">
+					<input class="board_list_btn" type="button" id="giveMod_ok" value="수정"
+						onclick="modClass()">
+				</c:if>
+				<input class="boardDetail_delete_btn" type="button" id="calcel" value="취소" onclick="go_back()">
+			</div>
+		</div>
+
+		<div class="clear"></div>
 	</form>
 </article>
 <!-- 메인 끝 -->
 
-<%@ include file="../footer.jsp" %>
+<%@ include file="../footer.jsp"%>

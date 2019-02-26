@@ -1,0 +1,39 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ include file="../header.jsp"%>
+<%@ include file="mypagesidemenu.jsp"%>
+
+<link href="/css/mypage.css" rel="stylesheet" type="text/css" />
+
+<div class="mygiveList">
+	<h1><span>내가 쓴 글</span></h1>
+	<form name="mypagefrm">
+	<!-- 내가 쓴 기부글 -->
+	<table class="mygiveList_table">
+	<thead>
+	<tr>
+		<td>기부 재능</td>		
+		<td>제목</td>
+		<td>마감일</td>
+		<td>진행 상태</td>
+		<td>삭제</td>
+	</tr>
+	</thead>
+	<c:forEach var="mywriteDonation" items="${mywriteDonationList}">
+		<tr>
+			<td>${mywriteDonation.talent1}&ensp;/&ensp;${mywriteDonation.talent2}</td>
+			<td><a href="/give/donationDetail&${mywriteDonation.no}">${mywriteDonation.subject}</a></td>
+			<td>${mywriteDonation.closing_date}&ensp;</td>
+			<td>${mywriteDonation.app_progress}</td>
+			<td><input type="checkbox" id="clip"></td>
+		</tr>
+	</c:forEach>
+	</table>
+		<input type="button" id="delete_btn" value="체크 한 글 삭제" onclick="delDonationClasses()">
+	</form>
+</div>
+
+<div id=member></div>
+
+
+<%@ include file="../footer.jsp"%>
