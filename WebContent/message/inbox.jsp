@@ -1,10 +1,13 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="../header.jsp"%>
+<%@ include file="/header.jsp"%>
+<div style="background-color: #8ecbc4;">
+	<img class="message_img" src="/images/message.jpg">
+</div>
+<div class="noteall">
 <%@ include file="sidemenu.jsp"%>
-
-<section class="top_section"></section>
+<!-- <section class="top_section"></section> -->
 
 <div class="note_area">
 	<h4>받은 쪽지함</h4>
@@ -38,11 +41,12 @@
 		</c:forEach>
 	</table>
 	</form>
-	<div class="paginate">
+<%-- 	<div class="paginate">
 		<input type="button" value="<<"> <input type="button"
 			value="<"> <input type="button" value="1"> <input
 			type="button" value=">"> <input type="button" value=">>">
-	</div>
+	</div> --%>
+</div>
 </div>
 
 

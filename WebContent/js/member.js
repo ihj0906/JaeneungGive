@@ -114,14 +114,14 @@ function modify() {
 	if (!$("#password").val()) {
 		$("#msgPassword").text("비밀번호를 입력해주세요.");
 		$('#password').focus();
-	} else if (!$('#confirmPassword').val()) {
-		$("#msgConfirmPassword").text("비밀번호확인을 입력해주세요");
+	} else if ($('#changepassword').val() != ''  && !$('#confirmPassword').val()) {
+		$("#msgConfirmPassword").text("비밀번호 변경 확인을 입력해주세요");
 		$('#confirmPassword').focus();
-	} else if ($('#password').val() != $('#confirmPassword').val()) {
-		$("#msgConfirmPassword").text("비밀번호가 일치하지 않습니다. 다시 확인해주세요");
+	} else if ($('#changepassword').val() != '' && $('#confirmPassword').val() != '' && $('#changepassword').val() != $('#confirmPassword').val()) {
+		$("#msgConfirmPassword").text("변경할 비밀번호 일치하지 않습니다. 다시 확인해주세요");
 		$('#confirmPassword').val('');
 		$('#confirmPassword').focus();
-	} else if (!$('#phone').val()) {
+	} else if (!$('#phone').val()) {	
 		$("#msgPhone").text("휴대전화를 입력해주세요.");
 		$('#phone').focus();
 	} else if (!$('#email').val()) {
@@ -130,7 +130,7 @@ function modify() {
 	} else {
 		var id = $('#id').val();
 		var password = $('#password').val();
-
+		
 		$.ajax({
 			url : "/login/check/",
 			type : "post",
@@ -193,8 +193,6 @@ function login() {
 function findId() {
 	var name = $('#name').val();
 	var email = $('#email').val();
-	
-	
 	if (!name) {
 		$(".findResult .msg").text("이름을 입력해주세요");
 		$(".findResult .msg").attr("style", "color:#f00");
@@ -203,9 +201,6 @@ function findId() {
 		$(".findResult .msg").text("이메일을 입력해주세요");
 		$(".findResult .msg").attr("style", "color:#f00");
 		$('#email').focus();
-		
-		
-		
 	} else {
 		$.ajax({
 			url : "/findId/Result",
@@ -214,7 +209,6 @@ function findId() {
 				"name" : name,
 				"email" : email
 			},
-			
 			success : function(data) {
 				if (data != "") {
 					$(".findResult .msg").text("고객님의 아이디는" + data + "입니다");

@@ -40,6 +40,7 @@ public class ApplicantController {
 			// 3-3 ) 지원자수 = 총인원수
 			return "redirect:" + url;
 		}
+//		교환 신청시 
 		applicantSvc.addApplicant1(applicant);
 		return "redirect:" + url;
 	}

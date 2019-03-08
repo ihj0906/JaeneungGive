@@ -141,7 +141,7 @@
 								<td>${list.no}</td>
 								<td>${list.id}</td>
 								<td colspan='2'>
-								<c:if test="${list.progress==1}">신청</c:if></td>
+								<c:if test="${list.progress==3}">신청</c:if></td>
 							</tr>
 						</c:forEach>
 					</c:when>

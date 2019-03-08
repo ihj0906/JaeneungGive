@@ -3,10 +3,19 @@ package dto;
 public class JoinRequest {
 	private String id;
 	private String password;
+	private String changepassword;
 	private String confirmPassword;
 	private String email;
 	private String phone;
 	private String name;
+
+	public String getChangepassword() {
+		return changepassword;
+	}
+
+	public void setChangepassword(String changepassword) {
+		this.changepassword = changepassword;
+	}
 
 	public String getName() {
 		return name;
@@ -59,5 +68,5 @@ public class JoinRequest {
 	public boolean isPasswordEqualToConfirmPassword() {
 		return password.equals(confirmPassword);
 	}
-
+	
 }

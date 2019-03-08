@@ -18,36 +18,44 @@
 			<table id="join_table">
 
 				<tr>
-					<td style="width: 110px;">아이디</td>
-					<td style="width: 100px;">
-					
- <!-- disabled 읽기 쓰기 전부 X get post방식 둘다 못넘김 readonly 읽을 수 만 있음 get post 방식 넘기기 가능 -->
-					<input type="text" value="${member.id}" disabled>
-					<input type="hidden" name="id" id="id" value="${member.id}"></td>
+					<th style="width: 150px;">아이디</th>
+					<td style="width: 100px"><input type="text"
+						value="${member.id}" disabled><input type="hidden"
+						name="id" id="id" value="${member.id}"></td>
 				</tr>
 				<tr>
-					<td>비밀번호</td>
+					<th>현재 비밀번호</th>
 					<td><input type="password" name="password" id="password" onclick="engNumOnly()" /></td>
 					<td><span class="msg" id="msgPassword">(영문 대소문자/숫자,
 							15자)</span></td>
 				</tr>
 				<tr>
-					<td>비밀번호 확인</td>
-					<td><input type="password" name="confirmPassword" id="confirmPassword" onclick="engNumOnly()"/></td>
+					<th>비밀번호 변경</th>
+					<td><input type="password" name="changepassword" id="changepassword" onclick="engNumOnly()" /></td>
+					<td><span class="msg" id="msgChangePassword">(영문 대소문자/숫자,
+							15자)</span></td>
+				</tr>
+				<tr>
+					<th>비밀번호 변경 확인</th>
+					<td><input type="password" name="confirmPassword"
+						id="confirmPassword" onclick="engNumOnly()"/></td>
 					<td><span class="msg" id="msgConfirmPassword"></span></td>
 				</tr>
 				<tr>
-					<td>이름</td>
-					<td><input type="text" disabled name="name" value="${member.name}" /></td>
+					<th>이름</th>
+					<td><input type="text" disabled name="name"
+						value="${member.name}" /></td>
 				</tr>
 				<tr>
-					<td>휴대전화</td>
-					<td><input type="text" name="phone" id="phone" value="${member.phone}" onclick="numOnly()"/></td>
+					<th>휴대전화</th>
+					<td><input type="text" name="phone" id="phone"
+						value="${member.phone}" onclick="numOnly()"/></td>
 					<td><span class="msg" id="msgPhone" style="margin-left: 20px;">(하이픈('-')을 제외하고 입력 해 주세요.)</span></td>
 				</tr>
 				<tr>
-					<td>이메일</td>
-					<td><input type="text" name="email" id="email" value="${member.email}" onclick="forMail()"/></td>
+					<th>이메일</th>
+					<td><input type="text" name="email" id="email"
+						value="${member.email}" onclick="forMail()"/></td>
 					<td><span class="msg" id="msgEmail"></span></td>
 				</tr>
 				<tr>

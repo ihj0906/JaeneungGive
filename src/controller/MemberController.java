@@ -24,7 +24,6 @@ public class MemberController {
 
 	@RequestMapping("/mypage/memberinfo")
 	public String mypage(Model model, HttpSession session) {
-		// session 시작~ 끝까지 loginInfo 정보를 가지고 있음
 		LoginInfo loginInfo = (LoginInfo) session.getAttribute("loginInfo");
 		Member member = memberSvc.myinfo(loginInfo.getId());
 		model.addAttribute("member", member);
@@ -37,10 +36,9 @@ public class MemberController {
 	 * MemberService.checkPw(vo.getUserId(),vo.getUserPw()); }
 	 */
 	
-//	 POST 방식 / 대용량파일, 이미지파일, 개인정보 관련
-//	 GET 방식 / 검색기능
+	
 	@RequestMapping(value="/mypage/modify" , method = RequestMethod.POST)
-	public String modify(HttpSession session, JoinRequest joinReq) {
+	public String modify(JoinRequest joinReq) {
 		memberSvc.modify(joinReq);
 		return "redirect:/mypage/memberinfo";
 	}
@@ -50,13 +48,11 @@ public class MemberController {
 		return "member/findid";
 	}
 
-	@ResponseBody // ajax 관련 애너테이션
+	@ResponseBody
 	@RequestMapping(value = "/findId/Result", method = RequestMethod.POST)
 	public String findId(@RequestParam(value = "name") String name, @RequestParam(value = "email") String email) {
 		String findResult = "";
-		
 		String id = memberSvc.findId(name, email);
-		
 		if (id != null) {
 			findResult = id;
 			return findResult;

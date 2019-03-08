@@ -189,7 +189,7 @@
 
 							<c:choose>
 								<%-- 신청일이 지났을 경우 잔여 지원자수와 상관 없이 신청 불가 --%>
-								<c:when test="${strDate-endDate2 > 0}">
+								<c:when test="${exchangeDetail.app_progress != 3 && strDate-endDate2 > 0}">
 									<td colspan="5">신청일이 지나 마감되었습니다.</td>
 								</c:when>
 								<%-- 교한 성공 하여  마감  --%>

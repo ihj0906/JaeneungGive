@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="../header.jsp"%>
+<%@ include file="/header.jsp"%>
+<div style="background-color: #8ecbc4;">
+	<img class="message_img" src="/images/message.jpg">
+</div>
+<div class="noteall">
 <%@ include file="sidemenu.jsp"%>
-
-<section class="top_section"></section>
-
 <div class="note_area">
 	<h4>쪽지 쓰기</h4>
 	<!-- 기부 / 교환 글 카테고리 출력 -->
@@ -27,13 +28,13 @@
 		<span id="counter">(0 / 최대 1000자)</span>
 		</td></tr>
 		<tr><td colspan="2" class="message_btn">
-			<input type="button" value="취소" onclick="cancelMessage()">
-			<input type="button" value="보내기" onclick="sendMessage()">
+			<input type="button" class="message_cancel_btn" value="취소" onclick="cancelMessage()">
+			<input type="button" class="message_submit_btn"value="보내기" onclick="sendMessage()">
 		</td></tr>
 		</table>
 
 	</form>
 </div>
 
-
-<%@ include file="../footer.jsp"%>
+</div>
+<%@ include file="/footer.jsp"%>
